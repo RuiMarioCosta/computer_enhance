@@ -18,6 +18,11 @@
       "cacheVariables": {
         "CMAKE_C_COMPILER": "gcc",
         "CMAKE_CXX_COMPILER": "g++"
+      },
+      "condition": {
+        "type": "notEquals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows"
       }
     },
     {
@@ -26,6 +31,19 @@
       "cacheVariables": {
         "CMAKE_C_COMPILER": "clang",
         "CMAKE_CXX_COMPILER": "clang++"
+      }
+    },
+    {
+      "name": "compiler-msvc",
+      "hidden": true,
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "cl",
+        "CMAKE_CXX_COMPILER": "cl"
+      },
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows"
       }
     },
     {
@@ -43,313 +61,91 @@
       }
     },
     {
-      "name": "buildtype-coverage",
-      "hidden": true,
-      "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "COVERAGE"
-      },
-      "environment": {
-        "LC_ALL": "en_US.UTF-8",
-        "LC_CTYPE": "en_US.UTF-8"
-      }
-    },
-    {
-      "name": "buildtype-asan",
-      "hidden": true,
-      "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "ASAN"
-      }
-    },
-    {
-      "name": "buildtype-msan",
-      "hidden": true,
-      "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "MSAN"
-      }
-    },
-    {
-      "name": "buildtype-tsan",
-      "hidden": true,
-      "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "TSAN"
-      }
-    },
-    {
-      "name": "arch-x86",
-      "hidden": true,
-      "cacheVariables": {
-        "CMAKE_CROSSCOMPILING_EMULATOR": "qemu-x86_64"
-      },
-      "condition": {
-        "lhs": "$env{ARCH}",
-        "type": "equals",
-        "rhs": "x86"
-      }
-    },
-    {
-      "name": "arch-arm64",
-      "hidden": true,
-      "cacheVariables": {
-        "CMAKE_CROSSCOMPILING_EMULATOR": "qemu-aarch64"
-      },
-      "condition": {
-        "lhs": "$env{ARCH}",
-        "type": "equals",
-        "rhs": "arm64"
-      }
-    },
-    {
-      "name": "debug-gcc-x86",
+      "name": "debug-gcc",
       "inherits": [
-        "arch-x86",
         "buildtype-debug",
-        "compiler-gcc-x86",
+        "compiler-gcc",
         "conf-common"
       ]
     },
     {
-      "name": "debug-clang-x86",
+      "name": "debug-clang",
       "inherits": [
-        "arch-x86",
         "buildtype-debug",
         "compiler-clang",
         "conf-common"
       ]
     },
     {
-      "name": "release-gcc-x86",
+      "name": "debug-msvc",
       "inherits": [
-        "arch-x86",
-        "buildtype-release",
-        "compiler-gcc-x86",
-        "conf-common"
-      ]
-    },
-    {
-      "name": "release-clang-x86",
-      "inherits": [
-        "arch-x86",
-        "buildtype-release",
-        "compiler-clang",
-        "conf-common"
-      ]
-    },
-    {
-      "name": "coverage-gcc-x86",
-      "inherits": [
-        "arch-x86",
-        "buildtype-coverage",
-        "compiler-gcc-x86",
-        "conf-common"
-      ]
-    },
-    {
-      "name": "coverage-clang-x86",
-      "inherits": [
-        "arch-x86",
-        "buildtype-coverage",
-        "compiler-clang",
-        "conf-common"
-      ]
-    },
-    {
-      "name": "asan-gcc-x86",
-      "inherits": [
-        "arch-x86",
-        "buildtype-asan",
-        "compiler-gcc-x86",
-        "conf-common"
-      ]
-    },
-    {
-      "name": "asan-clang-x86",
-      "inherits": [
-        "arch-x86",
-        "buildtype-asan",
-        "compiler-clang",
-        "conf-common"
-      ]
-    },
-    {
-      "name": "msan-clang-x86",
-      "inherits": [
-        "arch-x86",
-        "buildtype-msan",
-        "compiler-clang",
-        "conf-common"
-      ]
-    },
-    {
-      "name": "tsan-gcc-x86",
-      "inherits": [
-        "arch-x86",
-        "buildtype-tsan",
-        "compiler-gcc-x86",
-        "conf-common"
-      ]
-    },
-    {
-      "name": "tsan-clang-x86",
-      "inherits": [
-        "arch-x86",
-        "buildtype-tsan",
-        "compiler-clang",
-        "conf-common"
-      ]
-    },
-    {
-      "name": "debug-gcc-arm64",
-      "inherits": [
-        "arch-arm64",
         "buildtype-debug",
-        "compiler-gcc-arm64",
+        "compiler-msvc",
         "conf-common"
       ]
     },
     {
-      "name": "debug-clang-arm64",
+      "name": "release-gcc",
       "inherits": [
-        "arch-arm64",
-        "buildtype-debug",
-        "compiler-clang",
-        "conf-common"
-      ]
-    },
-    {
-      "name": "release-gcc-arm64",
-      "inherits": [
-        "arch-arm64",
         "buildtype-release",
-        "compiler-gcc-arm64",
+        "compiler-gcc",
         "conf-common"
       ]
     },
     {
-      "name": "release-clang-arm64",
+      "name": "release-clang",
       "inherits": [
-        "arch-arm64",
         "buildtype-release",
         "compiler-clang",
         "conf-common"
       ]
     },
     {
-      "name": "coverage-gcc-arm64",
+      "name": "release-msvc",
       "inherits": [
-        "arch-arm64",
-        "buildtype-coverage",
-        "compiler-gcc-arm64",
-        "conf-common"
-      ]
-    },
-    {
-      "name": "coverage-clang-arm64",
-      "inherits": [
-        "arch-arm64",
-        "buildtype-coverage",
-        "compiler-clang",
-        "conf-common"
-      ]
-    },
-    {
-      "name": "asan-gcc-arm64",
-      "inherits": [
-        "arch-arm64",
-        "buildtype-asan",
-        "compiler-gcc-arm64",
-        "conf-common"
-      ]
-    },
-    {
-      "name": "asan-clang-arm64",
-      "inherits": [
-        "arch-arm64",
-        "buildtype-asan",
-        "compiler-clang",
-        "conf-common"
-      ]
-    },
-    {
-      "name": "msan-gcc-arm64",
-      "inherits": [
-        "arch-arm64",
-        "buildtype-msan",
-        "compiler-gcc-arm64",
-        "conf-common"
-      ]
-    },
-    {
-      "name": "msan-clang-arm64",
-      "inherits": [
-        "arch-arm64",
-        "buildtype-msan",
-        "compiler-clang",
-        "conf-common"
-      ]
-    },
-    {
-      "name": "tsan-gcc-arm64",
-      "inherits": [
-        "arch-arm64",
-        "buildtype-tsan",
-        "compiler-gcc-arm64",
-        "conf-common"
-      ]
-    },
-    {
-      "name": "tsan-clang-arm64",
-      "inherits": [
-        "arch-arm64",
-        "buildtype-tsan",
-        "compiler-clang",
+        "buildtype-release",
+        "compiler-msvc",
         "conf-common"
       ]
     }
   ],
   "buildPresets": [
     {
-      "name": "debug-gcc-x86",
-      "configurePreset": "debug-gcc-x86"
+      "name": "debug-gcc",
+      "configurePreset": "debug-gcc"
     },
     {
-      "name": "debug-clang-x86",
-      "configurePreset": "debug-clang-x86"
+      "name": "debug-clang",
+      "configurePreset": "debug-clang"
     },
     {
-      "name": "asan-gcc-x86",
-      "configurePreset": "asan-gcc-x86"
+      "name": "debug-msvc",
+      "configurePreset": "debug-msvc"
     },
     {
-      "name": "asan-clang-x86",
-      "configurePreset": "asan-clang-x86"
+      "name": "release-gcc",
+      "configurePreset": "release-gcc"
     },
     {
-      "name": "coverage-gcc-x86",
-      "configurePreset": "coverage-gcc-x86"
+      "name": "release-clang",
+      "configurePreset": "release-clang"
     },
     {
-      "name": "coverage-clang-x86",
-      "configurePreset": "coverage-clang-x86"
+      "name": "release-msvc",
+      "configurePreset": "release-msvc"
     }
   ],
   "testPresets": [
     {
-      "name": "coverage-clang-x86",
-      "configurePreset": "coverage-clang-x86",
+      "name": "debug-gcc",
+      "configurePreset": "debug-gcc",
       "output": {
         "outputOnFailure": true
       }
     },
     {
-      "name": "coverage-gcc-x86",
-      "configurePreset": "coverage-gcc-x86",
-      "output": {
-        "outputOnFailure": true
-      }
-    },
-    {
-      "name": "asan-clang-x86",
-      "configurePreset": "asan-clang-x86",
+      "name": "debug-clang",
+      "configurePreset": "debug-clang",
       "output": {
         "outputOnFailure": true
       }

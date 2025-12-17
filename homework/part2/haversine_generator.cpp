@@ -62,10 +62,10 @@ int main(int argc, char *argv[]) {
     std::uniform_real_distribution<> YcenterDis(-MaxAllowedY, MaxAllowedY);
     std::uniform_real_distribution<> YradiusDis(0, MaxAllowedY);
 
-    std::string jsonFile = "dat_" + std::to_string(PairCount) + "_flex.json";
+    std::string jsonFile = "data_" + std::to_string(PairCount) + "_flex.json";
     std::ofstream json{jsonFile};
     std::string haverFile =
-        "dat_" + std::to_string(PairCount) + "_haveranswer.f64";
+        "data_" + std::to_string(PairCount) + "_haveranswer.f64";
     std::ofstream haver{haverFile, std::ios_base::binary};
     constexpr auto max_precision{std::numeric_limits<long double>::digits10 +
                                  1};
