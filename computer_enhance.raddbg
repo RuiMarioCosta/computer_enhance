@@ -1,0 +1,175 @@
+// raddbg 0.9.24 project file
+
+recent_file: path: "perfaware/part2/78_profile_haversine.cpp"
+recent_file: path: "d:/os/obj/amd64fre/minkernel/crts/ucrt/src/appcrt/string/mt/objfre/amd64/minkernel/crts/ucrt/src/appcrt/string/amd64/strlen.asm"
+recent_file: path: "perfaware/part2/76_simple_profiler.cpp"
+recent_file: path: "perfaware/part2/listing_0070_platform_metrics.cpp"
+recent_file: path: "perfaware/part2/listing_0071_os_timer_main.cpp"
+recent_file: path: "perfaware/part2/75_profile_haversine.cpp"
+recent_file: path: "D:/a/_work/1/s/src/vctools/crt/vcstartup/src/startup/exe_common.inl"
+recent_file: path: "perfaware/part2/67_parse_haversine_data.cpp"
+recent_file: path: "../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/__msvc_string_view.hpp"
+recent_file: path: "perfaware/part2/listing_0069_lookup_json_parser.cpp"
+recent_file: path: "perfaware/part2/listing_0067_simple_haversine_main.cpp"
+recent_file: path: "perfaware/part2/listing_0068_buffer.cpp"
+recent_file: path: "perfaware/part2/66_haversine_generator.cpp"
+target:
+{
+  executable: "perfaware/part2/build/66_haversine_generator_dm.exe"
+  working_directory: "perfaware/part2/build"
+  arguments: "uniform 1234 1000"
+}
+target:
+{
+  executable: "perfaware/part2/build/66_haversine_generator_dm.exe"
+  working_directory: "perfaware/part2/build"
+  arguments: "cluster 1234 1000"
+}
+target:
+{
+  working_directory: "perfaware/part2/build"
+  executable: "perfaware/part2/build/listing_0067_simple_haversine_main_dm.exe\r"
+  arguments: "C:/Users/ctw00533/source/computer_enhance/perfaware/part2/data_1234_flex.json C:/Users/ctw00533/source/computer_enhance/perfaware/part2/data_1234_haveranswer.f64\r"
+}
+target:
+{
+  working_directory: "perfaware/part2/build"
+  executable: "perfaware/part2/build/listing_0071_os_timer_main_dm.exe"
+}
+target:
+{
+  working_directory: "perfaware/part2/build"
+  arguments: "C:/Users/ctw00533/source/computer_enhance/perfaware/part2/data_1234_flex.json C:/Users/ctw00533/source/computer_enhance/perfaware/part2/data_1234_haveranswer.f64\r"
+  executable: "perfaware/part2/build/67_parse_haversine_data_dm.exe\r"
+}
+target:
+{
+  working_directory: "perfaware/part2/build"
+  arguments: "C:/Users/ctw00533/source/computer_enhance/perfaware/part2/data_1234_flex.json C:/Users/ctw00533/source/computer_enhance/perfaware/part2/data_1234_haveranswer.f64\r"
+  executable: "perfaware/part2/build/75_profile_haversine_dm.exe"
+}
+target:
+{
+  working_directory: "perfaware/part2/build"
+  arguments: "C:/Users/ctw00533/source/computer_enhance/perfaware/part2/data_1234_flex.json C:/Users/ctw00533/source/computer_enhance/perfaware/part2/data_1234_haveranswer.f64\r"
+  executable: "perfaware/part2/build/78_profile_haversine_rm.exe\r"
+  enabled: 1
+}
+debug_info:
+{
+  path: "C:/Users/ctw00533/source/computer_enhance/perfaware/part2/build/66_haversine_generator_dm.pdb"
+  timestamp: 66198571739254
+}
+breakpoint:
+{
+  source_location: "perfaware/part2/66_haversine_generator.cpp:84:1"
+  hit_count: 0
+  enabled: 0
+}
+breakpoint:
+{
+  source_location: "perfaware/part2/66_haversine_generator.cpp:82:1"
+  hit_count: 0
+  enabled: 0
+}
+debug_info:
+{
+  path: "C:/Users/ctw00533/source/computer_enhance/perfaware/part2/build/listing_0067_simple_haversine_main_dm.pdb"
+  timestamp: 66198152401167
+}
+breakpoint:
+{
+  source_location: "perfaware/part2/listing_0067_simple_haversine_main.cpp:127:1"
+  hit_count: 0
+}
+breakpoint:
+{
+  source_location: "perfaware/part2/listing_0067_simple_haversine_main.cpp:118:1"
+  hit_count: 0
+}
+breakpoint:
+{
+  source_location: "perfaware/part2/listing_0069_lookup_json_parser.cpp:488:1"
+  hit_count: 0
+}
+breakpoint:
+{
+  source_location: "perfaware/part2/listing_0069_lookup_json_parser.cpp:357:1"
+  hit_count: 0
+}
+breakpoint:
+{
+  source_location: "perfaware/part2/listing_0069_lookup_json_parser.cpp:114:1"
+  hit_count: 0
+}
+breakpoint:
+{
+  source_location: "perfaware/part2/listing_0069_lookup_json_parser.cpp:257:1"
+  hit_count: 0
+}
+breakpoint:
+{
+  source_location: "perfaware/part2/listing_0069_lookup_json_parser.cpp:298:1"
+  hit_count: 0
+}
+debug_info:
+{
+  path: "C:/Users/ctw00533/source/computer_enhance/perfaware/part2/build/67_parse_haversine_data_dm.pdb"
+  timestamp: 66199211934970
+}
+breakpoint:
+{
+  source_location: "perfaware/part2/67_parse_haversine_data.cpp:54:1"
+  hit_count: 0
+  enabled: 0
+}
+breakpoint:
+{
+  source_location: "perfaware/part2/67_parse_haversine_data.cpp:213:1"
+  hit_count: 0
+}
+breakpoint:
+{
+  source_location: "perfaware/part2/67_parse_haversine_data.cpp:331:1"
+  hit_count: 0
+}
+debug_info:
+{
+  path: "C:/Users/ctw00533/source/computer_enhance/perfaware/part2/build/75_profile_haversine_dm.pdb"
+  timestamp: 66199273114709
+}
+breakpoint:
+{
+  source_location: "perfaware/part2/75_profile_haversine.cpp:93:1"
+  hit_count: 0
+}
+debug_info:
+{
+  path: "C:/Users/ctw00533/source/computer_enhance/perfaware/part2/build/listing_0071_os_timer_main_dm.pdb"
+  timestamp: 66198152402588
+}
+breakpoint:
+{
+  address_location: 0x7ff79c7172a9
+  hit_count: 0
+}
+debug_info:
+{
+  path: "C:/Users/ctw00533/source/computer_enhance/perfaware/part2/build/78_profile_haversine_rm.pdb"
+  timestamp: 66200083363448
+}
+breakpoint:
+{
+  source_location: "perfaware/part2/78_profile_haversine.cpp:59:1"
+  hit_count: 0
+}
+breakpoint:
+{
+  source_location: "perfaware/part2/78_profile_haversine.cpp:12:1"
+  hit_count: 1
+}
+breakpoint:
+{
+  source_location: "perfaware/part2/76_simple_profiler.cpp:38:1"
+  hit_count: 0
+}
