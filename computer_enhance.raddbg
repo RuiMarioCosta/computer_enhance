@@ -1,5 +1,7 @@
 // raddbg 0.9.24 project file
 
+recent_file: path: "homework/part2/json_parser.cpp"
+recent_file: path: "../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/__msvc_string_view.hpp"
 recent_file: path: "perfaware/part2/78_profile_haversine.cpp"
 recent_file: path: "d:/os/obj/amd64fre/minkernel/crts/ucrt/src/appcrt/string/mt/objfre/amd64/minkernel/crts/ucrt/src/appcrt/string/amd64/strlen.asm"
 recent_file: path: "perfaware/part2/76_simple_profiler.cpp"
@@ -8,7 +10,6 @@ recent_file: path: "perfaware/part2/listing_0071_os_timer_main.cpp"
 recent_file: path: "perfaware/part2/75_profile_haversine.cpp"
 recent_file: path: "D:/a/_work/1/s/src/vctools/crt/vcstartup/src/startup/exe_common.inl"
 recent_file: path: "perfaware/part2/67_parse_haversine_data.cpp"
-recent_file: path: "../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/__msvc_string_view.hpp"
 recent_file: path: "perfaware/part2/listing_0069_lookup_json_parser.cpp"
 recent_file: path: "perfaware/part2/listing_0067_simple_haversine_main.cpp"
 recent_file: path: "perfaware/part2/listing_0068_buffer.cpp"
@@ -44,6 +45,20 @@ target:
 }
 target:
 {
+  working_directory: "out/build/debug-msvc/homework/part2\r"
+  arguments: "C:/Users/ctw00533/source/computer_enhance/out/build/debug-msvc/homework/part2/data_1000_flex.json\r C:/Users/ctw00533/source/computer_enhance/out/build/debug-msvc/homework/part2/data_1000_haveranswer.f64\r"
+  executable: "out/build/debug-msvc/homework/part2/json_parser.exe\r"
+  enabled: 0
+}
+target:
+{
+  working_directory: "out/build/debug-msvc/homework/part2\r"
+  arguments: "C:/Users/ctw00533/source/computer_enhance/out/build/debug-msvc/homework/part2/data_10_flex.json\r C:/Users/ctw00533/source/computer_enhance/out/build/debug-msvc/homework/part2/data_10_haveranswer.f64"
+  executable: "out/build/debug-msvc/homework/part2/json_parser.exe\r"
+  enabled: 1
+}
+target:
+{
   working_directory: "perfaware/part2/build"
   arguments: "C:/Users/ctw00533/source/computer_enhance/perfaware/part2/data_1234_flex.json C:/Users/ctw00533/source/computer_enhance/perfaware/part2/data_1234_haveranswer.f64\r"
   executable: "perfaware/part2/build/75_profile_haversine_dm.exe"
@@ -53,7 +68,7 @@ target:
   working_directory: "perfaware/part2/build"
   arguments: "C:/Users/ctw00533/source/computer_enhance/perfaware/part2/data_1234_flex.json C:/Users/ctw00533/source/computer_enhance/perfaware/part2/data_1234_haveranswer.f64\r"
   executable: "perfaware/part2/build/78_profile_haversine_rm.exe\r"
-  enabled: 1
+  enabled: 0
 }
 debug_info:
 {
@@ -166,10 +181,30 @@ breakpoint:
 breakpoint:
 {
   source_location: "perfaware/part2/78_profile_haversine.cpp:12:1"
-  hit_count: 1
+  hit_count: 0
 }
 breakpoint:
 {
   source_location: "perfaware/part2/76_simple_profiler.cpp:38:1"
   hit_count: 0
+}
+debug_info:
+{
+  path: "C:/Users/ctw00533/source/computer_enhance/out/build/debug-msvc/homework/part2/json_parser.pdb"
+  timestamp: 66201403222814
+}
+breakpoint:
+{
+  source_location: "homework/part2/json_parser.cpp:187:1"
+  hit_count: 0
+}
+breakpoint:
+{
+  source_location: "homework/part2/json_parser.cpp:60:1"
+  hit_count: 1
+}
+breakpoint:
+{
+  source_location: "homework/part2/json_parser.cpp:66:1"
+  hit_count: 1
 }
