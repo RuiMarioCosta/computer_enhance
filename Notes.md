@@ -249,3 +249,9 @@ point because it drops the resolution of the timer down to 10MHz.
 2. Fairly accurate
 3. Low overhead
 4. Easy to read/compare/interpret (optional)
+
+### A First Look at Profiling Overhead
+
+Adding profile blocks add overhead and the key point is to minimize this overhead
+by being able to turn on and off the profiler so that the runtime can be compared
+and keep only the main profile blocks.
