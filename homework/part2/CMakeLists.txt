@@ -11,13 +11,23 @@ target_link_libraries(haversine_generator
     haversine_math
 )
 
+add_library(profiler
+  profiler.hpp
+  profiler.cpp
+)
+target_link_libraries(profiler
+  PRIVATE
+    metrics
+)
+
 add_library(haversine_parser
   haversine_parser.hpp
   haversine_parser.cpp
 )
 target_link_libraries(haversine_parser
-  PRIVATE
+  PUBLIC
     haversine_math
+    profiler
 )
 
 add_executable(json_parser
@@ -39,15 +49,6 @@ add_executable(profile_haversine_1
 target_link_libraries(profile_haversine_1
   PRIVATE
     haversine_parser
-    metrics
-)
-
-add_library(profiler
-  profiler.hpp
-  profiler.cpp
-)
-target_link_libraries(profiler
-  PRIVATE
     metrics
 )
 

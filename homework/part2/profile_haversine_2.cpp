@@ -9,22 +9,16 @@ int main(int argc, char *argv[]) {
   BeginProfile();
 
   if (argc == 2 || argc == 3) {
-    // Prof_Read = ReadCPUTimer();
     auto const file_content = read_file(argv[1]);
-    // Prof_MiscSetup = ReadCPUTimer();
     auto tokenizer = JsonTokenizer(file_content);
-    // Prof_Parse = ReadCPUTimer();
     auto parser = JsonParser(std::move(tokenizer));
     auto data = parser.parse();
 
-    // Prof_GetPairs = ReadCPUTimer();
     auto pairCount = getPairCount(data);
     std::cout << "Input size: " << file_content.size() << '\n';
     std::cout << "Pair count: " << pairCount << '\n';
     constexpr auto max_precision{std::numeric_limits<long double>::digits10};
-    // Prof_Sum = ReadCPUTimer();
     auto sum = sumHaversineDistances(pairCount, data);
-    // Prof_MiscOutput = ReadCPUTimer();
     std::cout << std::setprecision(max_precision) << "Haversine sum: " << sum
               << '\n';
 

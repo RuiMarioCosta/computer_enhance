@@ -1,6 +1,7 @@
 #include "haversine_parser.hpp"
 
 #include "haversine_math.hpp"
+#include "profiler.hpp"
 #include "types.hpp"
 
 #include <cctype>
@@ -137,6 +138,8 @@ JsonParser::JsonParser(JsonTokenizer tokenizer)
     : m_tokenizer{std::move(tokenizer)}, m_token{m_tokenizer.next()} {}
 
 JsonValue JsonParser::parse() {
+  TimeFunction;
+
   auto value = _value();
   m_token = m_tokenizer.next();
   if (m_token.type != json_token_type::End) {
@@ -146,6 +149,8 @@ JsonValue JsonParser::parse() {
 }
 
 JsonValue JsonParser::_value() {
+  TimeFunction;
+
   switch (m_token.type) {
   case json_token_type::Open_brace: {
     return _object();
@@ -222,7 +227,9 @@ JsonValue JsonParser::_number() {
   return value;
 }
 
-std::string read_file(std::filesystem::path const &path) {
+std::string read_file(std::filesystem::path const& path) {
+  TimeFunction;
+
   std::ifstream fp(path, std::ios::in | std::ios::binary);
   std::stringstream buffer;
   buffer << fp.rdbuf();
@@ -230,25 +237,32 @@ std::string read_file(std::filesystem::path const &path) {
 }
 
 u64 getPairCount(JsonValue data) {
+  TimeFunction;
+
   auto object = std::get<JsonObject>(data);
   auto pairs = std::get<JsonArray>(object["pairs"]);
   return pairs.size();
 }
 
 f64 sumHaversineDistances(u64 PairCount, JsonValue data) {
+  TimeFunction;
+
   auto object = std::get<JsonObject>(data);
   auto pairs = std::get<JsonArray>(object["pairs"]);
 
   f64 EarthRadius = 6372.8;
   f64 sum = 0;
-  for (auto const &pair : pairs) {
-    auto values = std::get<JsonObject>(pair);
-    auto x0 = std::get<double>(values.at("x0"));
-    auto y0 = std::get<double>(values.at("y0"));
-    auto x1 = std::get<double>(values.at("x1"));
-    auto y1 = std::get<double>(values.at("y1"));
-    f64 dis = ReferenceHaversine(x0, y0, x1, y1, EarthRadius);
-    sum += dis;
+  {
+    TimeBlock("Lookup and Convert");
+    for (auto const& pair : pairs) {
+      auto values = std::get<JsonObject>(pair);
+      auto x0 = std::get<double>(values.at("x0"));
+      auto y0 = std::get<double>(values.at("y0"));
+      auto x1 = std::get<double>(values.at("x1"));
+      auto y1 = std::get<double>(values.at("y1"));
+      f64 dis = ReferenceHaversine(x0, y0, x1, y1, EarthRadius);
+      sum += dis;
+    }
   }
   sum /= PairCount;
   return sum;

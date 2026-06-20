@@ -5,32 +5,36 @@
 #include <iostream>
 #include <string_view>
 
-struct measure {
-  u64 time;
+struct profile_anchor {
+  u64 tsc_elapsed;
+  u64 tsc_elapsed_children;
+  u64 hit_count;
   std::string_view label;
 };
 
 struct profiler {
-  std::array<measure, 4096> points;
+  std::array<profile_anchor, 4096> anchors;
   u64 start;
   u64 end;
-  size_t index = 0;
 };
 
-class profile_point {
-  u64 m_start;
+class profile_scope {
+  std::string_view m_label;
   size_t m_index;
+  size_t m_parent_index;
+  u64 m_start;
 
 public:
-  profile_point(std::string_view label);
-  ~profile_point();
+  profile_scope(std::string_view label, size_t anchor_index);
+  ~profile_scope();
 };
 
 void BeginProfile();
 
+#define NameConcat2(A, B) A##B
+#define NameConcat(A, B) NameConcat2(A, B)
 #define TimeBlock(Name)                                                        \
-  profile_point { Name }
+  profile_scope NameConcat(Block, __LINE__)(Name, __COUNTER__ + 1);
 #define TimeFunction TimeBlock(__func__)
 
-void print(std::string_view desc, u64 elapsed, u64 begin, u64 end);
 void EndAndPrintProfile();

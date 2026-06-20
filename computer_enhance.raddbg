@@ -1,9 +1,16 @@
-// raddbg 0.9.24 project file
+// raddbg 0.9.25 project file
 
+recent_file: path: "homework/part2/profiler.cpp"
+recent_file: path: "homework/part2/haversine_parser.cpp"
+recent_file: path: "homework/part2/metrics.hpp"
+recent_file: path: "homework/part2/profile_haversine_2.cpp"
+recent_file: path: "homework/part2/profile_haversine_1.cpp"
+recent_file: path: "homework/part2/metrics.cpp"
+recent_file: path: "D:/a/_work/1/s/src/vctools/crt/vcstartup/src/startup/exe_common.inl"
+recent_file: path: "homework/part2/types.hpp"
 recent_file: path: "perfaware/part2/listing_0085_recursive_profiler.cpp"
 recent_file: path: "perfaware/part2/listing_0086_recursive_haversine_main.cpp"
 recent_file: path: "perfaware/part2/listing_0083_recursive_timed_lookup_json_parser.cpp"
-recent_file: path: "D:/a/_work/1/s/src/vctools/crt/vcstartup/src/startup/exe_common.inl"
 recent_file: path: "homework/part2/json_parser.cpp"
 recent_file: path: "../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/__msvc_string_view.hpp"
 recent_file: path: "perfaware/part2/78_profile_haversine.cpp"
@@ -212,7 +219,6 @@ target:
 {
   executable: "perfaware/part2/build/listing_0086_recursive_haversine_main_dc.exe"
   working_directory: "perfaware/part2/build"
-  enabled: 1
   arguments: "C:/Users/ctw00533/source/computer_enhance/perfaware/part2/build/dat_1000_flex.json\r"
 }
 debug_info:
@@ -228,10 +234,47 @@ breakpoint:
 breakpoint:
 {
   source_location: "perfaware/part2/listing_0085_recursive_profiler.cpp:91:1"
-  hit_count: 2
+  hit_count: 0
 }
 breakpoint:
 {
   source_location: "perfaware/part2/listing_0085_recursive_profiler.cpp:93:1"
+  hit_count: 0
+}
+target:
+{
+  executable: "out/build/debug-clang/homework/part2/profile_haversine_2.exe"
+  working_directory: "out/build/debug-clang/homework/part2"
+  enabled: 1
+  arguments: "C:\\Users\\ctw00533\\source\\computer_enhance\\out\\build\\debug-clang\\homework\\part2\\data_100000_flex.json"
+}
+debug_info:
+{
+  path: "C:/Users/ctw00533/source/computer_enhance/out/build/debug-clang/homework/part2/profile_haversine_2.pdb"
+  timestamp: 66217958506406
+}
+breakpoint:
+{
+  source_location: "homework/part2/haversine_parser.cpp:152:1"
+  hit_count: 5
+}
+breakpoint:
+{
+  address_location: 0x7ff6454c43d9
+  hit_count: 0
+}
+breakpoint:
+{
+  source_location: "homework/part2/profiler.cpp:17:1"
+  hit_count: 7
+}
+breakpoint:
+{
+  source_location: "homework/part2/profiler.cpp:21:1"
+  hit_count: 3
+}
+breakpoint:
+{
+  source_location: "homework/part2/haversine_parser.cpp:144:1"
   hit_count: 0
 }
