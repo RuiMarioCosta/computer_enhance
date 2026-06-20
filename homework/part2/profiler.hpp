@@ -6,8 +6,8 @@
 #include <string_view>
 
 struct profile_anchor {
-  u64 tsc_elapsed;
-  u64 tsc_elapsed_children;
+  u64 tsc_elapsed_exclusive; // does not include children
+  u64 tsc_elapsed_inclusive; // includes children
   u64 hit_count;
   std::string_view label;
 };
@@ -22,6 +22,7 @@ class profile_scope {
   std::string_view m_label;
   size_t m_index;
   size_t m_parent_index;
+  u64 m_old_tsc_elapsed_inclusive;
   u64 m_start;
 
 public:
