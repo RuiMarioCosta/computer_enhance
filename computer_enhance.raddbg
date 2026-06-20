@@ -133,7 +133,7 @@ target:
 debug_info:
 {
   path: "C:/Users/ctw00533/source/computer_enhance/out/build/debug-clang/homework/part2/profile_haversine_2.pdb"
-  timestamp: 66217959392888
+  timestamp: 66218000366939
 }
 breakpoint:
 {
@@ -142,18 +142,6 @@ breakpoint:
 }
 breakpoint:
 {
-  source_location: "homework/part2/profiler.cpp:17:1"
-  hit_count: 1
-  enabled: 0
-}
-breakpoint:
-{
-  source_location: "homework/part2/profiler.cpp:21:1"
-  hit_count: 1
-  enabled: 0
-}
-breakpoint:
-{
-  source_location: "homework/part2/profiler.cpp:39:1"
-  hit_count: 3
+  source_location: "homework/part2/profiler.cpp:68:1"
+  hit_count: 2
 }

@@ -17,6 +17,7 @@ struct profile_anchor {
   u64 tsc_elapsed_exclusive; // does not include children
   u64 tsc_elapsed_inclusive; // includes children
   u64 hit_count;
+  u64 processed_byte_count;
   std::string_view label;
 };
 
@@ -28,14 +29,14 @@ class profile_scope {
   u64 m_start;
 
 public:
-  profile_scope(std::string_view label, size_t anchor_index);
+  profile_scope(std::string_view label, size_t anchor_index, u64 byte_count);
   ~profile_scope();
 };
 
 #define NameConcat2(A, B) A##B
 #define NameConcat(A, B) NameConcat2(A, B)
-#define TimeBlock(Name)                                                        \
-  profile_scope NameConcat(Block, __LINE__)(Name, __COUNTER__ + 1);
+#define TimeBandwidth(Name, ByteCount)                                         \
+  profile_scope NameConcat(Block, __LINE__)(Name, __COUNTER__ + 1, ByteCount)
 #define ProfilerEndOfCompilationUnit                                           \
   static_assert(                                                               \
       __COUNTER__ < GlobalProfilerAnchorCount,                                 \
@@ -43,12 +44,13 @@ public:
 
 #else
 
-#define TimeBlock(...)
+#define TimeBandwidth(...)
 #define PrintAnchorData(...)
 #define ProfilerEndOfCompilationUnit
 
 #endif
 
+#define TimeBlock(Name) TimeBandwidth(Name, 0)
 #define TimeFunction TimeBlock(__func__)
 
 struct profiler {

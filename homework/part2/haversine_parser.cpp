@@ -228,7 +228,7 @@ JsonValue JsonParser::_number() {
 }
 
 std::string read_file(std::filesystem::path const& path) {
-  TimeFunction;
+  TimeBandwidth(__func__, std::filesystem::file_size(path));
 
   std::ifstream fp(path, std::ios::in | std::ios::binary);
   std::stringstream buffer;
@@ -245,7 +245,7 @@ u64 getPairCount(JsonValue data) {
 }
 
 f64 sumHaversineDistances(u64 PairCount, JsonValue data) {
-  TimeFunction;
+  TimeBandwidth(__func__, PairCount * sizeof(JsonValue));
 
   auto object = std::get<JsonObject>(data);
   auto pairs = std::get<JsonArray>(object["pairs"]);
