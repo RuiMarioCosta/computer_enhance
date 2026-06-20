@@ -5,7 +5,7 @@
 #include <fstream>
 #include <iostream>
 
-int main(int argc, char *argv[]) {
+int main(int argc, char* argv[]) {
   BeginProfile();
 
   if (argc == 2 || argc == 3) {
@@ -34,7 +34,7 @@ int main(int argc, char *argv[]) {
 
       haver.seekg(refCount * sizeof(f64));
       f64 refSum;
-      haver.read(reinterpret_cast<char *>(&refSum), sizeof(refSum));
+      haver.read(reinterpret_cast<char*>(&refSum), sizeof(refSum));
 
       std::cout << "Reference sum: " << refSum << '\n';
       std::cout << "Difference: " << sum - refSum << '\n';
@@ -50,3 +50,5 @@ int main(int argc, char *argv[]) {
   EndAndPrintProfile();
   return 0;
 }
+
+ProfilerEndOfCompilationUnit;
