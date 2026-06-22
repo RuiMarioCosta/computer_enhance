@@ -43,19 +43,10 @@ add_library(metrics
   metrics.cpp
 )
 
-add_executable(profile_haversine_1
-  profile_haversine_1.cpp
+add_executable(profile_haversine_main
+  profile_haversine_main.cpp
 )
-target_link_libraries(profile_haversine_1
-  PRIVATE
-    haversine_parser
-    metrics
-)
-
-add_executable(profile_haversine_2
-  profile_haversine_2.cpp
-)
-target_link_libraries(profile_haversine_2
+target_link_libraries(profile_haversine_main
   PRIVATE
     haversine_parser
     profiler

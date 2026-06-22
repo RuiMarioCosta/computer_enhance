@@ -125,10 +125,10 @@ debug_info:
 }
 target:
 {
-  executable: "out/build/debug-clang/homework/part2/profile_haversine_2.exe"
+  executable: "out/build/debug-clang/homework/part2/profile_haversine_main.exe"
   working_directory: "out/build/debug-clang/homework/part2"
-  enabled: 1
   arguments: "C:\\Users\\ctw00533\\source\\computer_enhance\\out\\build\\debug-clang\\homework\\part2\\data_100000_flex.json"
+  enabled: 1
 }
 debug_info:
 {
@@ -143,5 +143,10 @@ breakpoint:
 breakpoint:
 {
   source_location: "homework/part2/profiler.cpp:68:1"
-  hit_count: 2
+  hit_count: 0
+}
+debug_info:
+{
+  path: "C:/Users/ctw00533/source/computer_enhance/out/build/debug-clang/homework/part2/profile_haversine_main.pdb"
+  timestamp: 66218173724403
 }
