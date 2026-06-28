@@ -1,0 +1,28 @@
+[package]
+name = "haversine"
+version = "0.1.0"
+edition = "2021"
+description = "Rust port of the C++ haversine homework, for language comparison"
+
+[lib]
+name = "haversine"
+path = "src/lib.rs"
+
+[[bin]]
+name = "haversine_generator"
+path = "src/bin/haversine_generator.rs"
+
+[[bin]]
+name = "json_parser"
+path = "src/bin/json_parser.rs"
+
+[[bin]]
+name = "profile_haversine_main"
+path = "src/bin/profile_haversine_main.rs"
+
+[[bin]]
+name = "read_overhead_main"
+path = "src/bin/read_overhead_main.rs"
+
+[profile.release]
+opt-level = 3
