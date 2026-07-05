@@ -14,6 +14,10 @@ struct test_parameters {
 struct test_function {
   std::string_view name;
   std::function<void(repetition_tester&, test_parameters&)> func;
+
+  void operator()(repetition_tester& tester, test_parameters& params) const {
+    func(tester, params);
+  }
 };
 
 void write_to_all_bytes_reuse_buffer(repetition_tester& tester,

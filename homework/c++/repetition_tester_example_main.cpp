@@ -42,8 +42,8 @@ int main(int argc, char* argv[]) {
   }};
 
   for (auto const& func : test_functions) {
-    repetition_tester tester{file_size, cpu_timer_freq};
     std::println("--- {} ---", func.name);
-    func.func(tester, params);
+    repetition_tester tester{file_size, cpu_timer_freq};
+    func(tester, params);
   }
 }
