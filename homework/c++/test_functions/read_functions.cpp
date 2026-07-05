@@ -2,64 +2,70 @@
 
 #include <cstdio>
 #include <fstream>
+#include <iostream>
 
-status read_via_fread(repetition_tester& tester, test_parameters& params) {
-  std::vector<u8> scratch;
-  std::vector<u8>& buffer = params.working_buffer(scratch);
+namespace {
 
-  auto scope = tester.time_scope();
-  if (!scope) {
-    return tester.last_status();
-  }
-
+void read_via_fread_impl(repetition_tester& tester, test_parameters& params,
+                         std::vector<u8>& buffer) {
   FILE* file = std::fopen(params.file_name.c_str(), "rb");
   if (!file) {
-    return {status_code::invalid_operation, "failed to open input file"};
+    std::cerr << "ERROR: failed to open input file\n";
+    return;
   }
 
+  tester.begin();
   size_t read_count = std::fread(buffer.data(), 1, buffer.size(), file);
+  tester.end();
+
   std::fclose(file);
   if (read_count != buffer.size()) {
-    return {status_code::invalid_operation, "fread did not read entire file"};
+    std::cerr << "ERROR: fread did not read entire file\n";
+    return;
   }
-
-  status count_status = tester.count_bytes(read_count);
-  if (!count_status.is_success()) {
-    return count_status;
-  }
-
-  scope.reset();
-
-  return tester.finalize_sample();
+  tester.add_bytes_count(read_count);
 }
 
-status read_via_ifstream(repetition_tester& tester, test_parameters& params) {
-  std::vector<u8> scratch;
-  std::vector<u8>& buffer = params.working_buffer(scratch);
-
-  auto scope = tester.time_scope();
-  if (!scope) {
-    return tester.last_status();
-  }
-
+void read_via_ifstream_impl(repetition_tester& tester, test_parameters& params,
+                            std::vector<u8>& buffer) {
   std::ifstream file{params.file_name, std::ios::binary};
   if (!file) {
-    return {status_code::invalid_operation, "failed to open input file"};
+    std::cerr << "ERROR: failed to open input file\n";
+    return;
   }
 
+  tester.begin();
   file.read(reinterpret_cast<char*>(buffer.data()),
             static_cast<std::streamsize>(buffer.size()));
+  tester.end();
+
   if (file.gcount() != static_cast<std::streamsize>(buffer.size())) {
-    return {status_code::invalid_operation,
-            "ifstream read did not read entire file"};
+    std::cerr << "ERROR: ifstream read did not read entire file\n";
+    return;
   }
+  tester.add_bytes_count(buffer.size());
+}
 
-  status count_status = tester.count_bytes(buffer.size());
-  if (!count_status.is_success()) {
-    return count_status;
-  }
+} // namespace
 
-  scope.reset();
+void read_via_fread_reuse_buffer(repetition_tester& tester,
+                                 test_parameters& params) {
+  read_via_fread_impl(tester, params, params.buffer);
+}
 
-  return tester.finalize_sample();
+void read_via_fread_new_buffer(repetition_tester& tester,
+                               test_parameters& params) {
+  std::vector<u8> buffer(params.buffer.size());
+  read_via_fread_impl(tester, params, buffer);
+}
+
+void read_via_ifstream_reuse_buffer(repetition_tester& tester,
+                                    test_parameters& params) {
+  read_via_ifstream_impl(tester, params, params.buffer);
+}
+
+void read_via_ifstream_new_buffer(repetition_tester& tester,
+                                  test_parameters& params) {
+  std::vector<u8> buffer(params.buffer.size());
+  read_via_ifstream_impl(tester, params, buffer);
 }

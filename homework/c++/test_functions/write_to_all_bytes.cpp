@@ -1,24 +1,33 @@
 #include "test_functions.hpp"
 
-status write_to_all_bytes(repetition_tester& tester, test_parameters& params) {
-  std::vector<u8> scratch;
-  std::vector<u8>& buffer = params.working_buffer(scratch);
+void write_to_all_bytes_reuse_buffer(repetition_tester& tester,
+                                     test_parameters& params) {
+  // reuse buffer
+  auto buffer = params.buffer;
 
-  auto scope = tester.time_scope();
-  if (!scope) {
-    return tester.last_status();
+  while (tester.is_testing()) {
+    tester.begin();
+    for (size_t index = 0; index < buffer.size(); ++index) {
+      buffer[index] = static_cast<u8>(index);
+    }
+    tester.end();
+
+    tester.add_bytes_count(buffer.size());
   }
+}
 
-  for (size_t index = 0; index < buffer.size(); ++index) {
-    buffer[index] = static_cast<u8>(index);
+void write_to_all_bytes_new_buffer(repetition_tester& tester,
+                                   test_parameters& params) {
+  while (tester.is_testing()) {
+    // create a new buffer for every loop
+    std::vector<u8> buffer(params.buffer.size());
+
+    tester.begin();
+    for (size_t index = 0; index < buffer.size(); ++index) {
+      buffer[index] = static_cast<u8>(index);
+    }
+    tester.end();
+
+    tester.add_bytes_count(buffer.size());
   }
-
-  status count_status = tester.count_bytes(buffer.size());
-  if (!count_status.is_success()) {
-    return count_status;
-  }
-
-  scope.reset();
-
-  return tester.finalize_sample();
 }

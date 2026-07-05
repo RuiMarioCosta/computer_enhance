@@ -1,5 +1,9 @@
 // raddbg 0.9.25 project file
 
+recent_file: path: "homework/c++/repetition_tester_example_main.cpp"
+recent_file: path: "homework/c++/test_functions/write_to_all_bytes.cpp"
+recent_file: path: "../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/array"
+recent_file: path: "../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/functional"
 recent_file: path: "homework/part2/profiler.cpp"
 recent_file: path: "homework/part2/haversine_parser.cpp"
 recent_file: path: "homework/part2/metrics.cpp"
@@ -128,6 +132,12 @@ target:
   executable: "out/build/debug-clang/homework/part2/profile_haversine_main.exe"
   working_directory: "out/build/debug-clang/homework/part2"
   arguments: "C:\\Users\\ctw00533\\source\\computer_enhance\\out\\build\\debug-clang\\homework\\part2\\data_100000_flex.json"
+}
+target:
+{
+  executable: "out/build/debug-clang/homework/c++/repetition_tester_example_main.exe"
+  working_directory: "out/build/debug-clang/homework/c++"
+  arguments: "C:\\Users\\ctw00533\\source\\computer_enhance\\perfaware\\part3\\build\\data_1000000_flex.json"
   enabled: 1
 }
 debug_info:
@@ -149,4 +159,19 @@ debug_info:
 {
   path: "C:/Users/ctw00533/source/computer_enhance/out/build/debug-clang/homework/part2/profile_haversine_main.pdb"
   timestamp: 66218173724403
+}
+debug_info:
+{
+  path: "C:/Users/ctw00533/source/computer_enhance/out/build/debug-clang/homework/c++/repetition_tester_example_main.pdb"
+  timestamp: 66219408138502
+}
+breakpoint:
+{
+  source_location: "homework/c++/repetition_tester_example_main.cpp:45:1"
+  hit_count: 2
+}
+breakpoint:
+{
+  source_location: "homework/c++/test_functions/write_to_all_bytes.cpp:21:1"
+  hit_count: 0
 }

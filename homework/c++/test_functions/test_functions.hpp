@@ -1,9 +1,32 @@
 #pragma once
 
-#include "parameters.hpp"
+#include "repetition_tester.hpp"
 
-using overhead_test_func = status (*)(repetition_tester&, test_parameters&);
+#include <functional>
+#include <string>
+#include <string_view>
 
-status write_to_all_bytes(repetition_tester& tester, test_parameters& params);
-status read_via_fread(repetition_tester& tester, test_parameters& params);
-status read_via_ifstream(repetition_tester& tester, test_parameters& params);
+struct test_parameters {
+  std::string file_name;
+  std::vector<u8> buffer;
+};
+
+struct test_function {
+  std::string_view name;
+  std::function<void(repetition_tester&, test_parameters&)> func;
+};
+
+void write_to_all_bytes_reuse_buffer(repetition_tester& tester,
+                                     test_parameters& params);
+void write_to_all_bytes_new_buffer(repetition_tester& tester,
+                                   test_parameters& params);
+
+void read_via_fread_reuse_buffer(repetition_tester& tester,
+                                 test_parameters& params);
+void read_via_fread_new_buffer(repetition_tester& tester,
+                               test_parameters& params);
+
+void read_via_ifstream_reuse_buffer(repetition_tester& tester,
+                                    test_parameters& params);
+void read_via_ifstream_new_buffer(repetition_tester& tester,
+                                  test_parameters& params);

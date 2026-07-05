@@ -1,8 +1,6 @@
 add_library(repetition_tester
   repetition_tester.hpp
   repetition_tester.cpp
-  parameters.hpp
-  parameters.cpp
 )
 target_link_libraries(repetition_tester
   PUBLIC
