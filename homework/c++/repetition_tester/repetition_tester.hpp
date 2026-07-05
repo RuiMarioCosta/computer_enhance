@@ -37,6 +37,17 @@ struct wave_config {
   validation_policy validation{validation_policy::hard_fail};
   bool track_page_faults{true};
   u32 warmup_sample_count{};
+
+  wave_config() = default;
+  wave_config(u64 target_byte_count, u64 cpu_timer_frequency,
+              u32 seconds_to_try = 10, bool track_page_faults = true,
+              u32 warmup_sample_count = 0)
+      : target_byte_count{target_byte_count},
+        cpu_timer_frequency{cpu_timer_frequency},
+        trial_duration_ticks{cpu_timer_frequency *
+                             static_cast<u64>(seconds_to_try)},
+        track_page_faults{track_page_faults},
+        warmup_sample_count{warmup_sample_count} {}
 };
 
 [[nodiscard]] u64 seconds_to_ticks(f64 seconds, u64 cpu_timer_frequency);

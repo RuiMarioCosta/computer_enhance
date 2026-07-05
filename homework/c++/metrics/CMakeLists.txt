@@ -1,0 +1,12 @@
+add_library(metrics
+  metrics.hpp
+  metrics.cpp
+)
+target_link_libraries(metrics
+  PUBLIC
+    types
+)
+target_include_directories(metrics
+  PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}
+)

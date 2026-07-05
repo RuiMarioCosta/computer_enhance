@@ -1,0 +1,12 @@
+add_library(profiler
+  profiler.hpp
+  profiler.cpp
+)
+target_link_libraries(profiler
+  PUBLIC
+    metrics
+)
+target_include_directories(profiler
+  PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}
+)

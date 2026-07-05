@@ -1,0 +1,26 @@
+add_library(haversine_math
+  haversine_math.hpp
+  haversine_math.cpp
+)
+target_link_libraries(haversine_math
+  PUBLIC
+    types
+)
+target_include_directories(haversine_math
+  PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}
+)
+
+add_library(haversine_parser
+  haversine_parser.hpp
+  haversine_parser.cpp
+)
+target_link_libraries(haversine_parser
+  PUBLIC
+    haversine_math
+    profiler
+)
+target_include_directories(haversine_parser
+  PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}
+)

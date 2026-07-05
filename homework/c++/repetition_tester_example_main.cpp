@@ -1,138 +1,16 @@
 #define _CRT_SECURE_NO_WARNINGS
 
 #include "metrics.hpp"
+#include "parameters.hpp"
 #include "repetition_tester.hpp"
+#include "test_functions/test_functions.hpp"
 
 #include <array>
-#include <cstdio>
 #include <filesystem>
-#include <fstream>
 #include <iostream>
 #include <string>
-#include <vector>
 
 namespace {
-
-enum class allocation_mode {
-  reuse_buffer,
-  allocate_per_sample,
-};
-
-char const* describe_allocation_mode(allocation_mode mode) {
-  switch (mode) {
-  case allocation_mode::reuse_buffer:
-    return "ReuseBuffer";
-  case allocation_mode::allocate_per_sample:
-    return "AllocatePerSample";
-  }
-  return "Unknown";
-}
-
-struct test_parameters {
-  std::string file_name;
-  std::vector<u8> buffer;
-  allocation_mode mode;
-
-  test_parameters(std::string_view name, size_t buffer_size)
-      : file_name{name}, buffer(buffer_size),
-        mode{allocation_mode::reuse_buffer} {}
-};
-
-using overhead_test_func = status (*)(repetition_tester&, test_parameters&);
-
-std::vector<unsigned char>&
-working_buffer(test_parameters& params, std::vector<unsigned char>& scratch) {
-  if (params.mode == allocation_mode::allocate_per_sample) {
-    scratch.resize(params.buffer.size());
-    return scratch;
-  }
-
-  return params.buffer;
-}
-
-status write_to_all_bytes(repetition_tester& tester, test_parameters& params) {
-  std::vector<unsigned char> scratch;
-  std::vector<unsigned char>& buffer = working_buffer(params, scratch);
-
-  auto scope = tester.time_scope();
-  if (!scope) {
-    return tester.last_status();
-  }
-
-  for (size_t index = 0; index < buffer.size(); ++index) {
-    buffer[index] = static_cast<unsigned char>(index);
-  }
-
-  status count_status = tester.count_bytes(buffer.size());
-  if (!count_status.is_success()) {
-    return count_status;
-  }
-
-  scope.reset();
-
-  return tester.finalize_sample();
-}
-
-status read_via_fread(repetition_tester& tester, test_parameters& params) {
-  std::vector<unsigned char> scratch;
-  std::vector<unsigned char>& buffer = working_buffer(params, scratch);
-
-  auto scope = tester.time_scope();
-  if (!scope) {
-    return tester.last_status();
-  }
-
-  FILE* file = std::fopen(params.file_name.c_str(), "rb");
-  if (!file) {
-    return {status_code::invalid_operation, "failed to open input file"};
-  }
-
-  size_t read_count = std::fread(buffer.data(), 1, buffer.size(), file);
-  std::fclose(file);
-  if (read_count != buffer.size()) {
-    return {status_code::invalid_operation, "fread did not read entire file"};
-  }
-
-  status count_status = tester.count_bytes(read_count);
-  if (!count_status.is_success()) {
-    return count_status;
-  }
-
-  scope.reset();
-
-  return tester.finalize_sample();
-}
-
-status read_via_ifstream(repetition_tester& tester, test_parameters& params) {
-  std::vector<unsigned char> scratch;
-  std::vector<unsigned char>& buffer = working_buffer(params, scratch);
-
-  auto scope = tester.time_scope();
-  if (!scope) {
-    return tester.last_status();
-  }
-
-  std::ifstream file{params.file_name, std::ios::binary};
-  if (!file) {
-    return {status_code::invalid_operation, "failed to open input file"};
-  }
-
-  file.read(reinterpret_cast<char*>(buffer.data()),
-            static_cast<std::streamsize>(buffer.size()));
-  if (file.gcount() != static_cast<std::streamsize>(buffer.size())) {
-    return {status_code::invalid_operation,
-            "ifstream read did not read entire file"};
-  }
-
-  status count_status = tester.count_bytes(buffer.size());
-  if (!count_status.is_success()) {
-    return count_status;
-  }
-
-  scope.reset();
-
-  return tester.finalize_sample();
-}
 
 f64 to_seconds(f64 ticks, u64 freq) {
   if (freq == 0) {
@@ -231,13 +109,7 @@ int main(int argc, char* argv[]) {
         std::cout << "\n--- " << describe_allocation_mode(params.mode) << " + "
                   << test.name << " ---\n";
 
-        wave_config config{};
-        config.target_byte_count = file_size;
-        config.cpu_timer_frequency = cpu_timer_freq;
-        config.trial_duration_ticks = seconds_to_ticks(10.0, cpu_timer_freq);
-        config.validation = validation_policy::hard_fail;
-        config.track_page_faults = true;
-        config.warmup_sample_count = 0;
+        wave_config config{file_size, cpu_timer_freq};
 
         status start = tester.start_wave(config);
         if (!start.is_success()) {

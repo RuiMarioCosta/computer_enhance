@@ -1,0 +1,13 @@
+add_library(test_functions
+  test_functions.hpp
+  write_to_all_bytes.cpp
+  read_functions.cpp
+)
+target_link_libraries(test_functions
+  PUBLIC
+    repetition_tester
+)
+target_include_directories(test_functions
+  PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}
+)
