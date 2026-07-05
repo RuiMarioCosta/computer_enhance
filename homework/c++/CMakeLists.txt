@@ -43,6 +43,24 @@ add_library(metrics
   metrics.cpp
 )
 
+add_library(repetition_tester
+  repetition_tester.hpp
+  repetition_tester.cpp
+)
+target_link_libraries(repetition_tester
+  PRIVATE
+    metrics
+)
+
+add_executable(repetition_tester_example_main
+  repetition_tester_example_main.cpp
+)
+target_link_libraries(repetition_tester_example_main
+  PRIVATE
+    repetition_tester
+    metrics
+)
+
 add_executable(profile_haversine_main
   profile_haversine_main.cpp
 )

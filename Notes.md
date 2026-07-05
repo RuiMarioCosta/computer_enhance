@@ -8,9 +8,28 @@
     - [Opcode Patterns in 8086 Arithmetic](#opcode-patterns-in-8086-arithmetic)
     - [Simulating ADD, SUB, and CMP](#simulating-add-sub-and-cmp)
     - [Simulating Conditional Jumps](#simulating-conditional-jumps)
+    - [Other Common Instructions](#other-common-instructions)
+    - [The Stack](#the-stack)
+      - [caller](#caller)
+      - [function](#function)
+      - [caller (with push and pop)](#caller-with-push-and-pop)
+      - [function (with push and pop)](#function-with-push-and-pop)
+      - [caller (with push, pop and call)](#caller-with-push-pop-and-call)
+      - [function (with push, pop and call)](#function-with-push-pop-and-call)
+    - [Estimating Cycles](#estimating-cycles)
   - [Basic Profiling](#basic-profiling)
     - [Introduction to RDTSC](#introduction-to-rdtsc)
     - [How does QueryPerformanceCounter measure time?](#how-does-queryperformancecounter-measure-time)
+    - [Instrumentation-Based Profiling](#instrumentation-based-profiling)
+    - [Profiling Nested Blocks](#profiling-nested-blocks)
+    - [A First Look at Profiling Overhead](#a-first-look-at-profiling-overhead)
+  - [Moving Data](#moving-data)
+    - [Monitoring OS Performance Counters](#monitoring-os-performance-counters)
+    - [Page Faults](#page-faults)
+    - [Probing OS Page Fault Behavior](#probing-os-page-fault-behavior)
+    - [Four-Level Paging](#four-level-paging)
+    - [Analyzing Page Fault Anomalies](#analyzing-page-fault-anomalies)
+    - [Powerful Page Mapping Techniques](#powerful-page-mapping-techniques)
 <!--toc:end-->
 
 ## Reading ASM
@@ -255,3 +274,63 @@ point because it drops the resolution of the timer down to 10MHz.
 Adding profile blocks add overhead and the key point is to minimize this overhead
 by being able to turn on and off the profiler so that the runtime can be compared
 and keep only the main profile blocks.
+
+## Moving Data
+
+### Monitoring OS Performance Counters
+
+Windows has "Performance Monitor" which can be used to investigate a process.
+
+### Page Faults
+
+Page Fault is the interrupt that happens when you write into a piece of virtual
+address space that hasn't been mapped but the OS knows about.
+
+### Probing OS Page Fault Behavior
+
+Where are the extra page faults coming from?
+Why does the page faults have an almost staircase pattern?
+
+### Four-Level Paging
+
+A pointer of size 64 bits is:
+| 16 bits (always zero) | 9 bits | 9 bits | 9 bits | 9 bits | 12 bit (offset) |
+
+The bottom 48 bits is what is used to do the virtual to physical address translation.
+The last 12 bits say which bytes are in physical RAM, 2^12 = 4096 = 4KiB.
+The middle 36 bits that from a hierarchical 4-level tree.
+
+Inside the CPU there is a register called CR3 is used when the CPU needs to do
+address translation and is used when it needs to find the first table of the
+4-level tree. This table has pointers to the next table in the tree, and so on.
+In the last table is where it's the pointer to the actual physical RAM.
+
+The reason for the 9 bits is, since the OS works with pages of 4KiB in size then
+it makes sense to make the table itself fit in a page, therefore,
+4096/sizeof(pointer) = 4096/8 = 512 = 2^9, thus the 9.
+
+The CPU allows to increase the page size by extending the physical index by
+including the bits in the levels, for example, from 12 to 12 + 9 = 21 this means
+that the page size is 2^21 = 2MiB.
+
+### Analyzing Page Fault Anomalies
+
+The extra page faults come from the additional pages needed for the tables
+themselves. When the table reaches the 512th index it needs a new page.
+
+### Powerful Page Mapping Techniques
+
+Circular buffers:
+
+- Assume buffer of 16KiB
+- Replicate the buffer in virtual memory | 16 KiB | 16 KiB | 16 KiB |
+- Map the 3 chunks into the same physical memory
+
+Sparse memory
+
+### Faster Reads with Large Page Allocations
+
+By increasing the page size we can significantly reduce the overhead introduced
+by the page faults and get a performance similar to a reused buffer.
+
+### Inspecting Loop Assembly

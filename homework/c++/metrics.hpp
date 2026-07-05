@@ -11,14 +11,13 @@
 
 #endif
 
-u64 GetOSTimerFreq(void);
-u64 ReadOSTimer(void);
+u64 ReadOSPageFaultCount();
 
 /* NOTE(casey): This does not need to be "inline", it could just be "static"
    because compilers will inline it anyway. But compilers will warn about
    static functions that aren't used. So "inline" is just the simplest way
    to tell them to stop complaining about that. */
-inline u64 ReadCPUTimer(void) {
+inline u64 ReadCPUTimer() {
   // NOTE(casey): If you were on ARM, you would need to replace __rdtsc
   // with one of their performance counter read instructions, depending
   // on which ones are available on your platform.
