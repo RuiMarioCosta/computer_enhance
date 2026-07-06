@@ -32,15 +32,15 @@ int main(int argc, char* argv[]) {
   test_parameters params{input_path.string(),
                          std::vector<u8>(static_cast<size_t>(file_size))};
 
-  const std::array<test_function, 3> test_functions{{
-      {"ReuseBuffer + malloc + WriteToAllBytes",
-       write_to_all_bytes_reuse_buffer_malloc},
-      {"ReuseBuffer + WriteToAllBytes", write_to_all_bytes_reuse_buffer},
-      {"NewBuffer + WriteToAllBytes", write_to_all_bytes_new_buffer},
-      // {"ReuseBuffer + fread", read_via_fread_reuse_buffer},
-      // {"NewBuffer + fread", read_via_fread_new_buffer},
-      // {"ReuseBuffer + ifstream", read_via_ifstream_reuse_buffer},
-      // {"NewBuffer + ifstream", read_via_ifstream_new_buffer},
+  const std::array<test_function, 4> test_functions{{
+      // {"Malloc ReuseBuffer + WriteToAllBytes",
+      //  write_to_all_bytes_reuse_buffer_malloc},
+      // {"ReuseBuffer + WriteToAllBytes", write_to_all_bytes_reuse_buffer},
+      // {"NewBuffer + WriteToAllBytes", write_to_all_bytes_new_buffer},
+      {"ReuseBuffer + fread", read_via_fread_reuse_buffer},
+      {"NewBuffer + fread", read_via_fread_new_buffer},
+      {"ReuseBuffer + ifstream", read_via_ifstream_reuse_buffer},
+      {"NewBuffer + ifstream", read_via_ifstream_new_buffer},
   }};
 
   for (auto const& func : test_functions) {

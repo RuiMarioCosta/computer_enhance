@@ -112,6 +112,6 @@ void repetition_tester::_print_value(std::string_view label,
 
   if (mem_page_faults > 0) {
     std::print(" PF: {:.4f} ({:.4f}k/fault)", mem_page_faults,
-               byte_count / mem_page_faults);
+               byte_count / (mem_page_faults * 1024.0));
   }
 }
