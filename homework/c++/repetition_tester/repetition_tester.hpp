@@ -5,6 +5,18 @@
 #include <limits>
 #include <string_view>
 
+/**
+ * @brief Marks a buffer as externally observable after benchmark work.
+ *
+ * This function is used as an optimization barrier in tight benchmark loops:
+ * by passing the buffer pointer and size to a non-inlined call site, we make
+ * it harder for the compiler to prove that writes are dead and remove them.
+ *
+ * @param p Pointer to the start of the buffer that was read/written.
+ * @param n Size of the buffer in bytes.
+ */
+void escape_buffer(void* p, size_t n);
+
 enum class TestMode {
   idle,
   testing,

@@ -32,7 +32,9 @@ int main(int argc, char* argv[]) {
   test_parameters params{input_path.string(),
                          std::vector<u8>(static_cast<size_t>(file_size))};
 
-  const std::array<test_function, 2> test_functions{{
+  const std::array<test_function, 3> test_functions{{
+      {"ReuseBuffer + malloc + WriteToAllBytes",
+       write_to_all_bytes_reuse_buffer_malloc},
       {"ReuseBuffer + WriteToAllBytes", write_to_all_bytes_reuse_buffer},
       {"NewBuffer + WriteToAllBytes", write_to_all_bytes_new_buffer},
       // {"ReuseBuffer + fread", read_via_fread_reuse_buffer},

@@ -22,6 +22,8 @@ struct test_function {
 
 void write_to_all_bytes_reuse_buffer(repetition_tester& tester,
                                      test_parameters& params);
+void write_to_all_bytes_reuse_buffer_malloc(repetition_tester& tester,
+                                            test_parameters& params);
 void write_to_all_bytes_new_buffer(repetition_tester& tester,
                                    test_parameters& params);
 

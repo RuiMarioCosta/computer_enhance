@@ -8,7 +8,14 @@ namespace {
 
 void read_via_fread_impl(repetition_tester& tester, test_parameters& params,
                          std::vector<u8>& buffer) {
+#if _WIN32
+  FILE* file = nullptr;
+  if (fopen_s(&file, params.file_name.c_str(), "rb") != 0) {
+    file = nullptr;
+  }
+#else
   FILE* file = std::fopen(params.file_name.c_str(), "rb");
+#endif
   if (!file) {
     std::cerr << "ERROR: failed to open input file\n";
     return;

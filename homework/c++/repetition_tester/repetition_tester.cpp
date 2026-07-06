@@ -1,9 +1,13 @@
 #include "repetition_tester.hpp"
 #include "metrics.hpp"
 
-#include <exception>
 #include <iostream>
 #include <print>
+
+__declspec(noinline) void escape_buffer(void* p, size_t n) {
+  (void)p;
+  (void)n;
+}
 
 Result::Result(u64 value)
     : test_count{value}, cpu_timer{value}, mem_page_faults{value},
