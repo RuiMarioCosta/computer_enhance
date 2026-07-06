@@ -61,18 +61,25 @@
       }
     },
     {
-      "name": "debug-gcc",
-      "inherits": [
-        "buildtype-debug",
-        "compiler-gcc",
-        "conf-common"
-      ]
+      "name": "buildtype-relwithdebinfo",
+      "hidden": true,
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+      }
     },
     {
       "name": "debug-clang",
       "inherits": [
         "buildtype-debug",
         "compiler-clang",
+        "conf-common"
+      ]
+    },
+    {
+      "name": "debug-gcc",
+      "inherits": [
+        "buildtype-debug",
+        "compiler-gcc",
         "conf-common"
       ]
     },
@@ -85,14 +92,6 @@
       ]
     },
     {
-      "name": "release-gcc",
-      "inherits": [
-        "buildtype-release",
-        "compiler-gcc",
-        "conf-common"
-      ]
-    },
-    {
       "name": "release-clang",
       "inherits": [
         "buildtype-release",
@@ -101,9 +100,41 @@
       ]
     },
     {
+      "name": "release-gcc",
+      "inherits": [
+        "buildtype-release",
+        "compiler-gcc",
+        "conf-common"
+      ]
+    },
+    {
       "name": "release-msvc",
       "inherits": [
         "buildtype-release",
+        "compiler-msvc",
+        "conf-common"
+      ]
+    },
+    {
+      "name": "relwithdebinfo-clang",
+      "inherits": [
+        "buildtype-relwithdebinfo",
+        "compiler-clang",
+        "conf-common"
+      ]
+    },
+    {
+      "name": "relwithdebinfo-gcc",
+      "inherits": [
+        "buildtype-relwithdebinfo",
+        "compiler-gcc",
+        "conf-common"
+      ]
+    },
+    {
+      "name": "relwithdebinfo-msvc",
+      "inherits": [
+        "buildtype-relwithdebinfo",
         "compiler-msvc",
         "conf-common"
       ]
@@ -133,6 +164,18 @@
     {
       "name": "release-msvc",
       "configurePreset": "release-msvc"
+    },
+    {
+      "name": "relwithdebinfo-gcc",
+      "configurePreset": "relwithdebinfo-gcc"
+    },
+    {
+      "name": "relwithdebinfo-clang",
+      "configurePreset": "relwithdebinfo-clang"
+    },
+    {
+      "name": "relwithdebinfo-msvc",
+      "configurePreset": "relwithdebinfo-msvc"
     }
   ],
   "testPresets": [
