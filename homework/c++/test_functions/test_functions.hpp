@@ -26,6 +26,8 @@ void write_to_all_bytes_reuse_buffer_malloc(repetition_tester& tester,
                                             test_parameters& params);
 void write_to_all_bytes_new_buffer(repetition_tester& tester,
                                    test_parameters& params);
+void write_to_all_bytes_reuse_buffer_malloc_asm(repetition_tester& tester,
+                                                test_parameters& params);
 
 void read_via_fread_reuse_buffer(repetition_tester& tester,
                                  test_parameters& params);
@@ -36,3 +38,8 @@ void read_via_ifstream_reuse_buffer(repetition_tester& tester,
                                     test_parameters& params);
 void read_via_ifstream_new_buffer(repetition_tester& tester,
                                   test_parameters& params);
+
+void MOVAllBytes(repetition_tester& tester, test_parameters& params);
+void NOPAllBytes(repetition_tester& tester, test_parameters& params);
+void CMPAllBytes(repetition_tester& tester, test_parameters& params);
+void DECAllBytes(repetition_tester& tester, test_parameters& params);
