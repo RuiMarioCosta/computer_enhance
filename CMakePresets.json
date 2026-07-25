@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 6,
   "configurePresets": [
     {
       "name": "conf-common",
@@ -192,6 +192,25 @@
       "output": {
         "outputOnFailure": true
       }
+    }
+  ],
+  "workflowPresets": [
+    {
+      "name": "debug-clang",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "debug-clang"
+        },
+        {
+          "type": "build",
+          "name": "debug-clang"
+        },
+        {
+          "type": "test",
+          "name": "debug-clang"
+        }
+      ]
     }
   ]
 }
