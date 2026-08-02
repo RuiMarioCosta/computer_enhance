@@ -1,6 +1,7 @@
 # Performance aware course
 
 <!--toc:start-->
+
 - [Performance aware course](#performance-aware-course)
   - [Reading ASM](#reading-asm)
     - [Instruction Decoding on the 8086](#instruction-decoding-on-the-8086)
@@ -30,6 +31,9 @@
     - [Four-Level Paging](#four-level-paging)
     - [Analyzing Page Fault Anomalies](#analyzing-page-fault-anomalies)
     - [Powerful Page Mapping Techniques](#powerful-page-mapping-techniques)
+    - [Faster Reads with Large Page Allocations](#faster-reads-with-large-page-allocations)
+    - [Inspecting Loop Assembly](#inspecting-loop-assembly)
+
 <!--toc:end-->
 
 ## Reading ASM
@@ -93,10 +97,10 @@ Jump instruction will jump according to the respective bit in the flag register.
 
 - multiplication: `mul` , `imul`, division: `div`, `idiv`
 - logic shifts: `shr` (shifts in 0s), arithmetic shift:`sar` (shifts in 1s),
-`shl` = `sal`
+  `shl` = `sal`
 - logic operations: `and`, `xor`, `or`, `not`, `test` (`test` is the same as
-`and` but it doesn't write back the result, it has the same relation as `sub`
-and `cmp`)
+  `and` but it doesn't write back the result, it has the same relation as `sub`
+  and `cmp`)
 - load effective address: `lea`
 - increment: `inc`, decrement: `dec`
 
@@ -174,9 +178,9 @@ with `ax` could be done but the `rip` is one of the register that cannot be an
 operand to simple instructions so there are specific instructions for this:
 
 - `call` which is exactly the same as `jmp` but right before doing the jump it
-will put in the stack the `ip` register
+  will put in the stack the `ip` register
 - `ret` which takes whatever the top values is on the stack and writes it into
-the `ip` register
+  the `ip` register
 
 Application Binary Interface (ABI) or "Calling convention"" are conventions for
 what is going to happen in this context of what responsibilities does the caller
@@ -334,3 +338,24 @@ By increasing the page size we can significantly reduce the overhead introduced
 by the page faults and get a performance similar to a reused buffer.
 
 ### Inspecting Loop Assembly
+
+### CPU Front End Basics
+
+Frontend is the part of the CPU responsible for decoding instructions into some
+kind of format that backend of the cpu can execute those things.
+
+We can think of the frontend and the backend being connected by a queue with the
+decoded things that the backend has to do.
+
+No matter how fast the backend is it will always be bottlenecked on the queue,
+if the queue isn't full then there is no way to improve performance.
+
+The frontend produces micro-ops (uops) that go into the queue. uops are specific
+to the architecture (more specifically to the backend).
+
+The frontend gets code (instructions) and the backend gets data from the caches,
+L1i and L1d respectively.
+
+There is a uops cache that improves the performance of decoding.
+
+### Branch Prediction

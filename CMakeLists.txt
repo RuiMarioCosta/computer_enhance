@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.31)
-project(performance_aware)
+project(performance_aware CXX ASM)
 
 enable_language(ASM_NASM)
 

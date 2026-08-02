@@ -9,7 +9,7 @@ void write_to_all_bytes_reuse_buffer(repetition_tester& tester,
                                      test_parameters& params) {
   auto size = params.buffer.size();
   // reuse buffer
-  auto buffer = params.buffer;
+  auto& buffer = params.buffer;
 
   while (tester.is_testing()) {
     tester.begin();

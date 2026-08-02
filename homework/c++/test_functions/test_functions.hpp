@@ -6,6 +6,17 @@
 #include <string>
 #include <string_view>
 
+extern "C" {
+void MOVAllBytesASM(u64 count, u8* data);
+void NOPAllBytesASM(u64 count, u8* data);
+void CMPAllBytesASM(u64 count, u8* data);
+void DECAllBytesASM(u64 count, u8* data);
+
+void NOP3x1AllBytes(u64 count, u8* data);
+void NOP1x3AllBytes(u64 count, u8* data);
+void NOP1x9AllBytes(u64 count, u8* data);
+}
+
 struct test_parameters {
   std::string file_name;
   std::vector<u8> buffer;

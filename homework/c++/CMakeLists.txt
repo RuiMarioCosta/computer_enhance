@@ -21,16 +21,6 @@ target_link_libraries(json_parser
     haversine_parser
 )
 
-add_executable(repetition_tester_example_main
-  repetition_tester_example_main.cpp
-)
-target_link_libraries(repetition_tester_example_main
-  PRIVATE
-    repetition_tester
-    metrics
-    test_functions
-)
-
 add_executable(profile_haversine_main
   profile_haversine_main.cpp
 )
@@ -39,3 +29,24 @@ target_link_libraries(profile_haversine_main
     haversine_parser
     profiler
 )
+
+add_executable(repetition_tester_readfile_main
+  repetition_tester_readfile_main.cpp
+)
+target_link_libraries(repetition_tester_readfile_main
+  PRIVATE
+    repetition_tester
+    metrics
+    test_functions
+)
+
+add_executable(repetition_tester_nops_main
+  repetition_tester_nops_main.cpp
+)
+target_link_libraries(repetition_tester_nops_main
+  PRIVATE
+    repetition_tester
+    metrics
+    test_functions
+)
+

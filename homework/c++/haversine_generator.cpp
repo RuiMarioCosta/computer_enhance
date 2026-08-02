@@ -24,12 +24,12 @@ std::uniform_real_distribution<> getDistribution(f64 center, f64 radius,
   return std::uniform_real_distribution<>(min, max);
 }
 
-int main(int argc, char *argv[]) {
+int main(int argc, char* argv[]) {
   f64 EarthRadius = 6372.8;
   u64 MaxPairCount = (1ULL << 34);
 
   if (argc == 4) {
-    char const *MethodName = argv[1];
+    char const* MethodName = argv[1];
     u64 SeedValue = atoll(argv[2]);
     size_t PairCount = atoll(argv[3]);
 
@@ -62,6 +62,7 @@ int main(int argc, char *argv[]) {
     std::uniform_real_distribution<> YcenterDis(-MaxAllowedY, MaxAllowedY);
     std::uniform_real_distribution<> YradiusDis(0, MaxAllowedY);
 
+    std::string a{"abc"};
     std::string jsonFile = "data_" + std::to_string(PairCount) + "_flex.json";
     std::ofstream json{jsonFile};
     std::string haverFile =
@@ -91,13 +92,13 @@ int main(int argc, char *argv[]) {
 
       json << "\t{\"x0\":" << X0 << ", " << "\"y0\":" << Y0 << ", "
            << "\"x1\":" << X1 << ", " << "\"y1\":" << Y1 << "},\n";
-      haver.write(reinterpret_cast<char *>(&HaversineDistance),
+      haver.write(reinterpret_cast<char*>(&HaversineDistance),
                   sizeof(HaversineDistance));
     }
     json.seekp(-3, std::ios_base::end);
     json << "\n]}";
     Sum /= static_cast<f64>(PairCount);
-    haver.write(reinterpret_cast<char *>(&Sum), sizeof(Sum));
+    haver.write(reinterpret_cast<char*>(&Sum), sizeof(Sum));
 
     std::cout << "Method: " << MethodName << '\n'
               << "Random seed: " << SeedValue << '\n'
