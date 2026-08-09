@@ -70,3 +70,13 @@ target_link_libraries(repetition_tester_jump_alignment
     test_functions
 )
 
+add_executable(repetition_tester_rat
+  repetition_tester_rat.cpp
+)
+target_link_libraries(repetition_tester_rat
+  PRIVATE
+    repetition_tester
+    metrics
+    test_functions
+)
+

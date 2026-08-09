@@ -23,6 +23,9 @@ void NOPAligned1(u64 count, u8* data);
 void NOPAligned15(u64 count, u8* data);
 void NOPAligned31(u64 count, u8* data);
 void NOPAligned63(u64 count, u8* data);
+
+void RATAdd(u64 count, u8* data);
+void RATMovAdd(u64 count, u8* data);
 }
 
 struct test_parameters {

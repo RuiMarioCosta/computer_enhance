@@ -47,25 +47,24 @@ instruction has a specific bit pattern
 
 The length of the instruction changes depending on the instruction
 
-memory to register = load (reading from memory)
-`mov bx,[75]` -> reads slot 75 and 76 because bx is 16bit
+memory to register = load (reading from memory) `mov bx,[75]` -> reads slot 75
+and 76 because bx is 16bit
 
-register to memory = store (writing to memory)
-`mov [75],bx` -> writes bx into address 75 and 76
+register to memory = store (writing to memory) `mov [75],bx` -> writes bx into
+address 75 and 76
 
 `mov bx,[bp+75]` -> effective address calculation
 
-`mov ax, 12` -> Immediate to register move, the value 12 is the immediate
-When moving an immediate to memory, e.g., `mov [bp+75], 12`, the assembler
-doesn't know if this is supposed
-to write 12 as 8bits or 16bits. In these cases what is actually written is
-`move [bp+75], word 12`.
+`mov ax, 12` -> Immediate to register move, the value 12 is the immediate When
+moving an immediate to memory, e.g., `mov [bp+75], 12`, the assembler doesn't
+know if this is supposed to write 12 as 8bits or 16bits. In these cases what is
+actually written is `move [bp+75], word 12`.
 
 ### Opcode Patterns in 8086 Arithmetic
 
 Similar to `mov`, other operations like `add`, `sub`, `cmp`, have the same type
-of patterns of register
-to register, memory to register, etc, the only difference is the opcode.
+of patterns of register to register, memory to register, etc, the only
+difference is the opcode.
 
 `jnz <8bit signed increment>` jump if not zero
 
@@ -142,7 +141,8 @@ object being saved as subtract it, e.g., `sub sp, 2`, then move the value to be
 saved into that location, `mov [sp], ax`. To get back the value the opposite is
 done, e.g., `mov ax, [sp]`, `add sp, 2`. This stack management could be the
 responsibility of the caller or callee, it is arbitrary. Since these instruction
-sequences are so common there are specific instruction for this: `push` and `pop`
+sequences are so common there are specific instruction for this: `push` and
+`pop`
 
 Rewriting the examples with these instruction:
 
@@ -253,7 +253,8 @@ windows it would be the QueryPerformanceCounter.
 
 ### How does QueryPerformanceCounter measure time?
 
-QueryPerformanceCounter is calling RDTSCP which is the same as RDTSC with two caveats:
+QueryPerformanceCounter is calling RDTSCP which is the same as RDTSC with two
+caveats:
 
 - eax the low
 - edx the high
@@ -275,9 +276,9 @@ point because it drops the resolution of the timer down to 10MHz.
 
 ### A First Look at Profiling Overhead
 
-Adding profile blocks add overhead and the key point is to minimize this overhead
-by being able to turn on and off the profiler so that the runtime can be compared
-and keep only the main profile blocks.
+Adding profile blocks add overhead and the key point is to minimize this
+overhead by being able to turn on and off the profiler so that the runtime can
+be compared and keep only the main profile blocks.
 
 ## Moving Data
 
@@ -292,17 +293,17 @@ address space that hasn't been mapped but the OS knows about.
 
 ### Probing OS Page Fault Behavior
 
-Where are the extra page faults coming from?
-Why does the page faults have an almost staircase pattern?
+Where are the extra page faults coming from? Why does the page faults have an
+almost staircase pattern?
 
 ### Four-Level Paging
 
-A pointer of size 64 bits is:
-| 16 bits (always zero) | 9 bits | 9 bits | 9 bits | 9 bits | 12 bit (offset) |
+A pointer of size 64 bits is: | 16 bits (always zero) | 9 bits | 9 bits | 9 bits
+| 9 bits | 12 bit (offset) |
 
-The bottom 48 bits is what is used to do the virtual to physical address translation.
-The last 12 bits say which bytes are in physical RAM, 2^12 = 4096 = 4KiB.
-The middle 36 bits that from a hierarchical 4-level tree.
+The bottom 48 bits is what is used to do the virtual to physical address
+translation. The last 12 bits say which bytes are in physical RAM, 2^12 = 4096 =
+4KiB. The middle 36 bits that from a hierarchical 4-level tree.
 
 Inside the CPU there is a register called CR3 is used when the CPU needs to do
 address translation and is used when it needs to find the first table of the
@@ -359,3 +360,41 @@ L1i and L1d respectively.
 There is a uops cache that improves the performance of decoding.
 
 ### Branch Prediction
+
+### The RAT and the Register File
+
+The expectation is that both code examples below take more or less the same
+cycles.
+
+```asm
+add rcx, 1
+add rcx, 1
+...
+```
+
+The add's are serially linked forming a giant dependency chain
+
+```asm
+mov rcx, rax
+add rcx, 1
+mov rcx, rax
+add rcx, 1
+...
+```
+
+In this case the move breaks the dependency and the add's only depend on the
+previous move making this example faster.
+
+When the uops enters the backend it first encounters the RAT.
+
+The RAT (Register Allocation Table but it has other names) is responsible for
+translating the registers name into the register file and has 16 entries for the
+usual registers. The register file has hundreds of registers.
+
+When a uop comes in, goes into the RAT and gets its registers translated and to
+some slots in the register file.
+
+What the RAT and register file are cooperating to do is to translate something
+with only 16 names into something that is working with several hundred names and
+because of that it takes something that it should have been serially dependent
+on a particular register and make that serial dependency go away.
