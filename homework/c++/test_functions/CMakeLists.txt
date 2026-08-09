@@ -31,6 +31,17 @@ set_target_properties(conditional_nop_loops PROPERTIES
   LINKER_LANGUAGE CXX
 )
 
+add_library(jump_alignment_obj OBJECT
+  jump_alignment.asm
+)
+set_source_files_properties(jump_alignment.asm PROPERTIES LANGUAGE ASM_NASM)
+add_library(jump_alignment STATIC
+  $<TARGET_OBJECTS:jump_alignment_obj>
+)
+set_target_properties(jump_alignment PROPERTIES
+  LINKER_LANGUAGE CXX
+)
+
 add_library(test_functions
   test_functions.hpp
   write_to_all_bytes.cpp
@@ -43,6 +54,7 @@ target_link_libraries(test_functions
     nop_loop
     multinop_loops
     conditional_nop_loops
+    jump_alignment
 )
 target_include_directories(test_functions
   PUBLIC

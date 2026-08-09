@@ -1,13 +1,15 @@
 // raddbg 0.9.25 project file
 
+recent_file: path: "homework/c++/repetition_tester_jump_alignment.cpp"
+recent_file: path: "homework/c++/repetition_tester/repetition_tester.cpp"
+recent_file: path: "homework/c++/metrics/metrics.cpp"
+recent_file: path: "D:/a/_work/1/s/src/vctools/crt/vcstartup/src/gs/amd64/amdsecgs.asm"
 recent_file: path: "homework/c++/repetition_tester_conditional_nop_loops.cpp"
 recent_file: path: "../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/random"
 recent_file: path: "homework/c++/repetition_tester_nops_main.cpp"
 recent_file: path: "homework/c++/test_functions/test_functions.hpp"
 recent_file: path: "homework/c++/test_functions/read_functions.cpp"
 recent_file: path: "homework/c++/test_functions/conditional_nop_loops.asm"
-recent_file: path: "homework/c++/metrics/metrics.cpp"
-recent_file: path: "homework/c++/repetition_tester/repetition_tester.cpp"
 recent_file: path: "../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/xmemory"
 recent_file: path: "../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/xstring"
 recent_file: path: "homework/c++/haversine_generator.cpp"
@@ -156,6 +158,13 @@ target:
   executable: "out/build/relwithdebinfo-msvc/homework/c++/repetition_tester_conditional_nop_loops.exe"
   working_directory: "out/build/relwithdebinfo-msvc"
   label: "relwithdebinfo msvc"
+  enabled: 0
+}
+target:
+{
+  executable: "out/build/relwithdebinfo-msvc/homework/c++/repetition_tester_jump_alignment.exe"
+  working_directory: "out/build/relwithdebinfo-msvc"
+  label: "relwithdebinfo msvc"
   enabled: 1
 }
 target:
@@ -271,5 +280,18 @@ breakpoint:
 breakpoint:
 {
   source_location: "homework/c++/repetition_tester_conditional_nop_loops.cpp:40:1"
-  hit_count: 1
+  hit_count: 0
 }
+debug_info:
+{
+  path: "C:/Users/ctw00533/source/computer_enhance/out/build/relwithdebinfo-msvc/homework/c++/repetition_tester_jump_alignment.pdb"
+  timestamp: 66222454648984
+}
+breakpoint:
+{
+  source_location: "homework/c++/repetition_tester_jump_alignment.cpp:42:1"
+  hit_count: 2
+}
+breakpoint: address_location: 0x7ff6e1ba4000
+breakpoint: address_location: 0x7ff6e1ba4040
+breakpoint: address_location: 0x7ff6e1ba4080

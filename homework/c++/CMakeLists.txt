@@ -60,3 +60,13 @@ target_link_libraries(repetition_tester_conditional_nop_loops
     test_functions
 )
 
+add_executable(repetition_tester_jump_alignment
+  repetition_tester_jump_alignment.cpp
+)
+target_link_libraries(repetition_tester_jump_alignment
+  PRIVATE
+    repetition_tester
+    metrics
+    test_functions
+)
+
