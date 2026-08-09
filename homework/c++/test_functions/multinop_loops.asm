@@ -1,4 +1,3 @@
-
 global NOP3x1AllBytes
 global NOP1x3AllBytes
 global NOP1x9AllBytes

@@ -1,19 +1,22 @@
 // raddbg 0.9.25 project file
 
+recent_file: path: "homework/c++/repetition_tester_conditional_nop_loops.cpp"
+recent_file: path: "../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/random"
+recent_file: path: "homework/c++/repetition_tester_nops_main.cpp"
+recent_file: path: "homework/c++/test_functions/test_functions.hpp"
+recent_file: path: "homework/c++/test_functions/read_functions.cpp"
+recent_file: path: "homework/c++/test_functions/conditional_nop_loops.asm"
+recent_file: path: "homework/c++/metrics/metrics.cpp"
+recent_file: path: "homework/c++/repetition_tester/repetition_tester.cpp"
 recent_file: path: "../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/xmemory"
 recent_file: path: "../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/xstring"
 recent_file: path: "homework/c++/haversine_generator.cpp"
 recent_file: path: "D:/a/_work/1/s/src/vctools/crt/vcstartup/src/startup/exe_common.inl"
 recent_file: path: "../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/string"
 recent_file: path: "../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/xutility"
-recent_file: path: "homework/c++/repetition_tester_nops_main.cpp"
-recent_file: path: "homework/c++/repetition_tester/repetition_tester.cpp"
-recent_file: path: "homework/c++/metrics/metrics.cpp"
 recent_file: path: "../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/functional"
-recent_file: path: "homework/c++/test_functions/test_functions.hpp"
 recent_file: path: "homework/c++/repetition_tester/repetition_tester.hpp"
 recent_file: path: "homework/c++/test_functions/write_to_all_bytes.cpp"
-recent_file: path: "homework/c++/test_functions/read_functions.cpp"
 recent_file: path: "homework/c++/repetition_tester_example_main.cpp"
 recent_file: path: "perfaware/part3/listing_0110_pagefault_overhead_test.cpp"
 recent_file: path: "perfaware/part3/listing_0111_pagefault_overhead_main.cpp"
@@ -150,9 +153,16 @@ target:
 }
 target:
 {
+  executable: "out/build/relwithdebinfo-msvc/homework/c++/repetition_tester_conditional_nop_loops.exe"
+  working_directory: "out/build/relwithdebinfo-msvc"
+  label: "relwithdebinfo msvc"
+  enabled: 1
+}
+target:
+{
   executable: "out/build/debug-clang/homework/c++/haversine_generator.exe"
   working_directory: out
-  enabled: 1
+  enabled: 0
   arguments: "uniform 123 10000"
 }
 target:
@@ -167,18 +177,6 @@ debug_info:
   path: "C:/Users/ctw00533/source/computer_enhance/out/build/debug-clang/homework/part2/profile_haversine_2.pdb"
   timestamp: 66218000366939
 }
-breakpoint:
-{
-  address_location: 0x7ff6454c43d9
-  hit_count: 0
-  enabled: 0
-}
-breakpoint:
-{
-  source_location: "homework/part2/profiler.cpp:68:1"
-  hit_count: 0
-  enabled: 0
-}
 debug_info:
 {
   path: "C:/Users/ctw00533/source/computer_enhance/out/build/debug-clang/homework/part2/profile_haversine_main.pdb"
@@ -188,30 +186,6 @@ debug_info:
 {
   path: "C:/Users/ctw00533/source/computer_enhance/out/build/debug-clang/homework/c++/repetition_tester_example_main.pdb"
   timestamp: 66219492304877
-}
-breakpoint:
-{
-  source_location: "homework/c++/repetition_tester/repetition_tester.cpp:88:1"
-  hit_count: 0
-  enabled: 0
-}
-breakpoint:
-{
-  source_location: "homework/c++/repetition_tester/repetition_tester.cpp:69:1"
-  hit_count: 0
-  enabled: 0
-}
-breakpoint:
-{
-  source_location: "homework/c++/repetition_tester/repetition_tester.cpp:73:1"
-  hit_count: 0
-  enabled: 0
-}
-breakpoint:
-{
-  source_location: "homework/c++/repetition_tester/repetition_tester.cpp:42:1"
-  hit_count: 0
-  enabled: 0
 }
 debug_info:
 {
@@ -248,35 +222,10 @@ debug_info:
   path: "C:/Users/ctw00533/source/computer_enhance/out/build/relwithdebinfo-msvc/homework/c++/repetition_tester_example_main.pdb"
   timestamp: 66219583727773
 }
-breakpoint:
-{
-  source_location: "homework/c++/test_functions/read_functions.cpp:24:1"
-  hit_count: 0
-}
-breakpoint:
-{
-  source_location: "homework/c++/test_functions/read_functions.cpp:117:1"
-  hit_count: 0
-}
-breakpoint:
-{
-  source_location: "homework/c++/test_functions/write_to_all_bytes.cpp:17:1"
-  hit_count: 0
-}
-breakpoint:
-{
-  source_location: "homework/c++/test_functions/write_to_all_bytes.cpp:38:1"
-  hit_count: 0
-}
 debug_info:
 {
   path: "C:/Users/ctw00533/source/computer_enhance/out/build/relwithdebinfo-msvc/homework/c++/repetition_tester_nops_main.pdb"
   timestamp: 66219912041679
-}
-breakpoint:
-{
-  source_location: "homework/c++/test_functions/test_functions.hpp:36:1"
-  hit_count: 0
 }
 breakpoint:
 {
@@ -288,11 +237,6 @@ debug_info:
   path: "C:/Users/ctw00533/source/computer_enhance/out/build/debug-msvc/homework/c++/repetition_tester_nops_main.pdb"
   timestamp: 66219912169420
 }
-breakpoint:
-{
-  address_location: 0x7ff76fd9b957
-  hit_count: 0
-}
 debug_info:
 {
   path: "C:/Users/ctw00533/source/computer_enhance/out/build/debug-clang/homework/c++/haversine_generator.pdb"
@@ -301,10 +245,31 @@ debug_info:
 breakpoint:
 {
   source_location: "homework/c++/haversine_generator.cpp:65:1"
-  hit_count: 1
+  hit_count: 0
 }
 breakpoint:
 {
   source_location: "../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/xstring:769:1"
   hit_count: 0
+}
+debug_info:
+{
+  path: "C:/Users/ctw00533/source/computer_enhance/out/build/relwithdebinfo-msvc/homework/c++/repetition_tester_conditional_nop_loops.pdb"
+  timestamp: 66222391988661
+}
+breakpoint:
+{
+  source_location: "homework/c++/repetition_tester_conditional_nop_loops.cpp:104:1"
+  hit_count: 0
+}
+breakpoint:
+{
+  address_location: 0x7ff758cc4751
+  hit_count: 0
+  enabled: 0
+}
+breakpoint:
+{
+  source_location: "homework/c++/repetition_tester_conditional_nop_loops.cpp:40:1"
+  hit_count: 1
 }

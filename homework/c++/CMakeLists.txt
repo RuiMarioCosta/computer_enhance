@@ -50,3 +50,13 @@ target_link_libraries(repetition_tester_nops_main
     test_functions
 )
 
+add_executable(repetition_tester_conditional_nop_loops
+  repetition_tester_conditional_nop_loops.cpp
+)
+target_link_libraries(repetition_tester_conditional_nop_loops
+  PRIVATE
+    repetition_tester
+    metrics
+    test_functions
+)
+

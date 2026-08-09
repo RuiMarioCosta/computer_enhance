@@ -15,6 +15,8 @@ void DECAllBytesASM(u64 count, u8* data);
 void NOP3x1AllBytes(u64 count, u8* data);
 void NOP1x3AllBytes(u64 count, u8* data);
 void NOP1x9AllBytes(u64 count, u8* data);
+
+void ConditionalNOP(u64 count, u8* data);
 }
 
 struct test_parameters {

@@ -20,6 +20,17 @@ set_target_properties(multinop_loops PROPERTIES
   LINKER_LANGUAGE CXX
 )
 
+add_library(conditional_nop_loops_obj OBJECT
+  conditional_nop_loops.asm
+)
+set_source_files_properties(conditional_nop_loops.asm PROPERTIES LANGUAGE ASM_NASM)
+add_library(conditional_nop_loops STATIC
+  $<TARGET_OBJECTS:conditional_nop_loops_obj>
+)
+set_target_properties(conditional_nop_loops PROPERTIES
+  LINKER_LANGUAGE CXX
+)
+
 add_library(test_functions
   test_functions.hpp
   write_to_all_bytes.cpp
@@ -31,6 +42,7 @@ target_link_libraries(test_functions
     repetition_tester
     nop_loop
     multinop_loops
+    conditional_nop_loops
 )
 target_include_directories(test_functions
   PUBLIC
