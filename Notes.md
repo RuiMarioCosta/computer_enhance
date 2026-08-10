@@ -398,3 +398,5 @@ What the RAT and register file are cooperating to do is to translate something
 with only 16 names into something that is working with several hundred names and
 because of that it takes something that it should have been serially dependent
 on a particular register and make that serial dependency go away.
+
+### Execution Ports and the Scheduler

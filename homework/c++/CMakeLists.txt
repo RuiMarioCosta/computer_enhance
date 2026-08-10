@@ -80,3 +80,13 @@ target_link_libraries(repetition_tester_rat
     test_functions
 )
 
+add_executable(repetition_tester_read_unroll
+  repetition_tester_read_unroll.cpp
+)
+target_link_libraries(repetition_tester_read_unroll
+  PRIVATE
+    repetition_tester
+    metrics
+    test_functions
+)
+
