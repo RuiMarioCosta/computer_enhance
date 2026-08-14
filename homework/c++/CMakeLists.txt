@@ -5,6 +5,8 @@ add_subdirectory(repetition_tester)
 add_subdirectory(test_functions)
 add_subdirectory(types)
 
+add_executable(cpu_info cpu_info.cpp)
+
 add_executable(haversine_generator
   haversine_generator.cpp
 )
@@ -30,63 +32,23 @@ target_link_libraries(profile_haversine_main
     profiler
 )
 
-add_executable(repetition_tester_readfile_main
-  repetition_tester_readfile_main.cpp
-)
-target_link_libraries(repetition_tester_readfile_main
-  PRIVATE
-    repetition_tester
-    metrics
-    test_functions
-)
+function(add_repetition_tester_executable target_name source_file)
+  add_executable(${target_name}
+    ${source_file}
+  )
+  target_link_libraries(${target_name}
+    PRIVATE
+      repetition_tester
+      metrics
+      test_functions
+  )
+endfunction()
 
-add_executable(repetition_tester_nops_main
-  repetition_tester_nops_main.cpp
-)
-target_link_libraries(repetition_tester_nops_main
-  PRIVATE
-    repetition_tester
-    metrics
-    test_functions
-)
-
-add_executable(repetition_tester_conditional_nop_loops
-  repetition_tester_conditional_nop_loops.cpp
-)
-target_link_libraries(repetition_tester_conditional_nop_loops
-  PRIVATE
-    repetition_tester
-    metrics
-    test_functions
-)
-
-add_executable(repetition_tester_jump_alignment
-  repetition_tester_jump_alignment.cpp
-)
-target_link_libraries(repetition_tester_jump_alignment
-  PRIVATE
-    repetition_tester
-    metrics
-    test_functions
-)
-
-add_executable(repetition_tester_rat
-  repetition_tester_rat.cpp
-)
-target_link_libraries(repetition_tester_rat
-  PRIVATE
-    repetition_tester
-    metrics
-    test_functions
-)
-
-add_executable(repetition_tester_read_unroll
-  repetition_tester_read_unroll.cpp
-)
-target_link_libraries(repetition_tester_read_unroll
-  PRIVATE
-    repetition_tester
-    metrics
-    test_functions
-)
+add_repetition_tester_executable(repetition_tester_readfile_main repetition_tester_readfile_main.cpp)
+add_repetition_tester_executable(repetition_tester_nops_main repetition_tester_nops_main.cpp)
+add_repetition_tester_executable(repetition_tester_conditional_nop_loops repetition_tester_conditional_nop_loops.cpp)
+add_repetition_tester_executable(repetition_tester_jump_alignment repetition_tester_jump_alignment.cpp)
+add_repetition_tester_executable(repetition_tester_rat repetition_tester_rat.cpp)
+add_repetition_tester_executable(repetition_tester_read_unroll repetition_tester_read_unroll.cpp)
+add_repetition_tester_executable(repetition_tester_read_widths repetition_tester_read_widths.cpp)
 
