@@ -37,6 +37,8 @@ void Read_8x2(u64 count, u8* data);
 void Read_16x2(u64 count, u8* data);
 void Read_32x2(u64 count, u8* data);
 void Read_64x2(u64 count, u8* data);
+
+void Read_32x8(u64 count, u8* data, u64 mask);
 }
 
 struct test_parameters {

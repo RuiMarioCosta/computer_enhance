@@ -18,6 +18,7 @@ add_asm_static_library(jump_alignment jump_alignment.asm)
 add_asm_static_library(rat rat.asm)
 add_asm_static_library(read_unroll read_unroll.asm)
 add_asm_static_library(read_widths read_widths.asm)
+add_asm_static_library(cache_test cache_test.asm)
 
 add_library(test_functions
   test_functions.hpp
@@ -35,6 +36,7 @@ target_link_libraries(test_functions
     rat
     read_unroll
     read_widths
+    cache_test
 )
 target_include_directories(test_functions
   PUBLIC

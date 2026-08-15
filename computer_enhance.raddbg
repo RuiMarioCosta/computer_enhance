@@ -1,9 +1,10 @@
 // raddbg 0.9.25 project file
 
-recent_file: path: "homework/c++/repetition_tester_read_widths.cpp"
-recent_file: path: "homework/c++/metrics/metrics.cpp"
+recent_file: path: "homework/c++/repetition_tester_cache_test.cpp"
 recent_file: path: "homework/c++/repetition_tester/repetition_tester.cpp"
+recent_file: path: "homework/c++/metrics/metrics.cpp"
 recent_file: path: "D:/a/_work/1/s/src/vctools/crt/vcstartup/src/gs/amd64/amdsecgs.asm"
+recent_file: path: "homework/c++/repetition_tester_read_widths.cpp"
 recent_file: path: "../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/format"
 recent_file: path: "D:/a/_work/1/s/src/vctools/crt/github/stl/src/vector_algorithms.cpp"
 recent_file: path: "../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/xutility"
@@ -176,6 +177,13 @@ target:
   executable: "out/build/relwithdebinfo-msvc/homework/c++/repetition_tester_read_widths.exe"
   working_directory: "out/build/relwithdebinfo-msvc"
   label: "relwithdebinfo msvc"
+  enabled: 0
+}
+target:
+{
+  executable: "out/build/relwithdebinfo-msvc/homework/c++/repetition_tester_cache_test.exe"
+  working_directory: "out/build/relwithdebinfo-msvc"
+  label: "relwithdebinfo msvc"
   enabled: 1
 }
 target:
@@ -336,15 +344,40 @@ breakpoint:
 breakpoint:
 {
   source_location: "homework/c++/repetition_tester_read_widths.cpp:44:1"
-  hit_count: 2
+  hit_count: 0
 }
 breakpoint:
 {
   source_location: "homework/c++/repetition_tester_read_widths.cpp:40:1"
-  hit_count: 1
+  hit_count: 0
 }
 breakpoint:
 {
   address_location: 0x7ff76e2440c0
+  hit_count: 0
+}
+debug_info:
+{
+  path: "C:/Users/ctw00533/source/computer_enhance/out/build/relwithdebinfo-msvc/homework/c++/repetition_tester_cache_test.pdb"
+  timestamp: 66222990425186
+}
+breakpoint:
+{
+  source_location: "homework/c++/repetition_tester_cache_test.cpp:39:1"
+  hit_count: 2
+}
+breakpoint:
+{
+  source_location: "homework/c++/repetition_tester_cache_test.cpp:45:1"
+  hit_count: 1
+}
+breakpoint:
+{
+  address_location: 0x7ff76f1a46c9
+  hit_count: 0
+}
+breakpoint:
+{
+  address_location: 0x7ff7e11546fa
   hit_count: 1
 }
