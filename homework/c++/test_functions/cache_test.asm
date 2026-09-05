@@ -1,4 +1,5 @@
 global Read_32x8
+global DoubleLoopRead_32x8
 
 section .text
 
@@ -32,5 +33,27 @@ Read_32x8:
     sub rcx, 0x100
     jnz .loop
 
+    ret
+
+DoubleLoopRead_32x8:
+    align 64
+.outer:
+    mov r9, r8
+    mov rax, rdx
+.inner:
+    vmovdqu ymm0, [rax]
+    vmovdqu ymm0, [rax + 0x20]
+    vmovdqu ymm0, [rax + 0x40]
+    vmovdqu ymm0, [rax + 0x60]
+    vmovdqu ymm0, [rax + 0x80]
+    vmovdqu ymm0, [rax + 0xa0]
+    vmovdqu ymm0, [rax + 0xc0]
+    vmovdqu ymm0, [rax + 0xe0]
+    add rax, 0x100
+    dec r9
+    jnz .inner
+
+    dec rcx
+    jnz .outer
     ret
 

@@ -26,3 +26,5 @@ inline u64 ReadCPUTimer() {
 }
 
 u64 GetCPUFreq();
+
+void SetProcessAffinity(u64 core);

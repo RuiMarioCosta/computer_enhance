@@ -4,12 +4,13 @@ recent_file: path: "homework/c++/repetition_tester_cache_test.cpp"
 recent_file: path: "homework/c++/repetition_tester/repetition_tester.cpp"
 recent_file: path: "homework/c++/metrics/metrics.cpp"
 recent_file: path: "D:/a/_work/1/s/src/vctools/crt/vcstartup/src/gs/amd64/amdsecgs.asm"
+recent_file: path: "homework/c++/repetition_tester/repetition_tester.hpp"
+recent_file: path: "../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/print"
+recent_file: path: "../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/vector"
 recent_file: path: "homework/c++/repetition_tester_read_widths.cpp"
 recent_file: path: "../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/format"
 recent_file: path: "D:/a/_work/1/s/src/vctools/crt/github/stl/src/vector_algorithms.cpp"
 recent_file: path: "../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/xutility"
-recent_file: path: "../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/print"
-recent_file: path: "homework/c++/repetition_tester/repetition_tester.hpp"
 recent_file: path: "homework/c++/repetition_tester_jump_alignment.cpp"
 recent_file: path: "homework/c++/repetition_tester_conditional_nop_loops.cpp"
 recent_file: path: "../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/random"
@@ -28,7 +29,6 @@ recent_file: path: "homework/c++/repetition_tester_example_main.cpp"
 recent_file: path: "perfaware/part3/listing_0110_pagefault_overhead_test.cpp"
 recent_file: path: "perfaware/part3/listing_0111_pagefault_overhead_main.cpp"
 recent_file: path: "perfaware/part3/listing_0106_mallocread_overhead_test.cpp"
-recent_file: path: "../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/vector"
 recent_file: path: "../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/__msvc_string_view.hpp"
 recent_file: path: "../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/type_traits"
 recent_file: path: "../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/array"
@@ -359,17 +359,7 @@ breakpoint:
 debug_info:
 {
   path: "C:/Users/ctw00533/source/computer_enhance/out/build/relwithdebinfo-msvc/homework/c++/repetition_tester_cache_test.pdb"
-  timestamp: 66222990425186
-}
-breakpoint:
-{
-  source_location: "homework/c++/repetition_tester_cache_test.cpp:39:1"
-  hit_count: 2
-}
-breakpoint:
-{
-  source_location: "homework/c++/repetition_tester_cache_test.cpp:45:1"
-  hit_count: 1
+  timestamp: 66223789630957
 }
 breakpoint:
 {
@@ -379,5 +369,45 @@ breakpoint:
 breakpoint:
 {
   address_location: 0x7ff7e11546fa
+  hit_count: 0
+}
+breakpoint:
+{
+  source_location: "homework/c++/repetition_tester_cache_test.cpp:32:1"
+  hit_count: 0
+}
+breakpoint:
+{
+  source_location: "homework/c++/repetition_tester_cache_test.cpp:36:1"
+  hit_count: 0
+}
+breakpoint:
+{
+  address_location: 0x7ff6f1794d10
+  hit_count: 0
+}
+breakpoint:
+{
+  address_location: 0x7ff617e24d0d
+  hit_count: 0
+}
+breakpoint:
+{
+  address_location: 0x7ff603f34c8d
+  hit_count: 0
+}
+breakpoint:
+{
+  address_location: 0x7ff77ad34c8d
+  hit_count: 0
+}
+breakpoint:
+{
+  address_location: 0x7ff7de9e4c90
+  hit_count: 0
+}
+breakpoint:
+{
+  source_location: "homework/c++/repetition_tester_cache_test.cpp:80:1"
   hit_count: 1
 }

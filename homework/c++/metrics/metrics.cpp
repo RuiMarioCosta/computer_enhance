@@ -1,5 +1,6 @@
 #include "metrics.hpp"
 #include "types.hpp"
+#include <stdexcept>
 
 #if _WIN32
 
@@ -81,4 +82,13 @@ u64 GetCPUFreq() {
   }
 
   return CPUFreq;
+}
+
+void SetProcessAffinity(u64 core) {
+  auto process = GetCurrentProcess();
+  DWORD_PTR mask = 1 << core;
+  auto result = SetProcessAffinityMask(process, mask);
+  if (!result) {
+    throw std::runtime_error{"Unable to pin the process to core"};
+  }
 }
