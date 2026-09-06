@@ -2,7 +2,6 @@
 #include "repetition_tester.hpp"
 #include "test_functions.hpp"
 
-#include <array>
 #include <numeric>
 #include <print>
 #include <ranges>

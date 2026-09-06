@@ -1,32 +1,32 @@
 // raddbg 0.9.25 project file
 
-recent_file: path: "homework/c++/repetition_tester_cache_test.cpp"
+recent_file: path: "homework/c++/011_repetition_tester_cache_test.cpp"
+recent_file: path: "perfaware/part3/listing_0110_pagefault_overhead_test.cpp"
 recent_file: path: "homework/c++/repetition_tester/repetition_tester.cpp"
 recent_file: path: "homework/c++/metrics/metrics.cpp"
 recent_file: path: "D:/a/_work/1/s/src/vctools/crt/vcstartup/src/gs/amd64/amdsecgs.asm"
 recent_file: path: "homework/c++/repetition_tester/repetition_tester.hpp"
 recent_file: path: "../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/print"
 recent_file: path: "../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/vector"
-recent_file: path: "homework/c++/repetition_tester_read_widths.cpp"
+recent_file: path: "homework/c++/010_repetition_tester_read_widths.cpp"
 recent_file: path: "../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/format"
 recent_file: path: "D:/a/_work/1/s/src/vctools/crt/github/stl/src/vector_algorithms.cpp"
 recent_file: path: "../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/xutility"
-recent_file: path: "homework/c++/repetition_tester_jump_alignment.cpp"
-recent_file: path: "homework/c++/repetition_tester_conditional_nop_loops.cpp"
+recent_file: path: "homework/c++/007_repetition_tester_jump_alignment.cpp"
+recent_file: path: "homework/c++/006_repetition_tester_conditional_nop_loops.cpp"
 recent_file: path: "../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/random"
-recent_file: path: "homework/c++/repetition_tester_nops_main.cpp"
+recent_file: path: "homework/c++/005_repetition_tester_nops_main.cpp"
 recent_file: path: "homework/c++/test_functions/test_functions.hpp"
 recent_file: path: "homework/c++/test_functions/read_functions.cpp"
 recent_file: path: "homework/c++/test_functions/conditional_nop_loops.asm"
 recent_file: path: "../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/xmemory"
 recent_file: path: "../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/xstring"
-recent_file: path: "homework/c++/haversine_generator.cpp"
+recent_file: path: "homework/c++/001_haversine_generator.cpp"
 recent_file: path: "D:/a/_work/1/s/src/vctools/crt/vcstartup/src/startup/exe_common.inl"
 recent_file: path: "../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/string"
 recent_file: path: "../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/functional"
 recent_file: path: "homework/c++/test_functions/write_to_all_bytes.cpp"
-recent_file: path: "homework/c++/repetition_tester_example_main.cpp"
-recent_file: path: "perfaware/part3/listing_0110_pagefault_overhead_test.cpp"
+recent_file: path: "homework/c++/004_repetition_tester_readfile_main.cpp"
 recent_file: path: "perfaware/part3/listing_0111_pagefault_overhead_main.cpp"
 recent_file: path: "perfaware/part3/listing_0106_mallocread_overhead_test.cpp"
 recent_file: path: "../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/__msvc_string_view.hpp"
@@ -56,6 +56,83 @@ recent_file: path: "perfaware/part2/listing_0068_buffer.cpp"
 recent_file: path: "perfaware/part2/66_haversine_generator.cpp"
 target:
 {
+  executable: "out/build/debug-clang/homework/c++/001_haversine_generator.exe"
+  working_directory: out
+  enabled: 0
+  arguments: "uniform 123 10000"
+}
+target:
+{
+  executable: "out/build/debug-msvc/homework/c++/005_repetition_tester_nops_main.exe"
+  working_directory: "out/build/debug-msvc"
+  label: "debug msvc"
+  enabled: 0
+}
+target:
+{
+  executable: "out/build/relwithdebinfo-msvc/homework/c++/004_repetition_tester_readfile_main.exe"
+  working_directory: "out/build/debug-clang/homework/c++"
+  arguments: "C:\\Users\\ctw00533\\source\\computer_enhance\\perfaware\\part3\\build\\data_1000000_flex.json"
+  label: debug
+}
+target:
+{
+  executable: "out/build/relwithdebinfo-msvc/homework/c++/004_repetition_tester_readfile_main.exe"
+  working_directory: "out/build/release-clang/homework/c++"
+  arguments: "C:\\Users\\ctw00533\\source\\computer_enhance\\perfaware\\part3\\build\\data_1000000_flex.json"
+  label: release
+}
+target:
+{
+  executable: "out/build/relwithdebinfo-msvc/homework/c++/004_repetition_tester_readfile_main.exe"
+  working_directory: "out/build/relwithdebinfo-clang"
+  arguments: "C:\\Users\\ctw00533\\source\\computer_enhance\\perfaware\\part3\\build\\data_1000000_flex.json"
+  label: "relwithdebinfo clang"
+}
+target:
+{
+  executable: "out/build/relwithdebinfo-msvc/homework/c++/004_repetition_tester_readfile_main.exe"
+  working_directory: "out/build/relwithdebinfo-msvc"
+  arguments: "C:\\Users\\ctw00533\\source\\computer_enhance\\perfaware\\part3\\build\\data_1000000_flex.json"
+  label: "relwithdebinfo msvc"
+}
+target:
+{
+  executable: "out/build/relwithdebinfo-msvc/homework/c++/005_repetition_tester_nops_main.exe"
+  working_directory: "out/build/relwithdebinfo-msvc"
+  label: "relwithdebinfo msvc"
+  enabled: 0
+}
+target:
+{
+  executable: "out/build/relwithdebinfo-msvc/homework/c++/006_repetition_tester_conditional_nop_loops.exe"
+  working_directory: "out/build/relwithdebinfo-msvc"
+  label: "relwithdebinfo msvc"
+  enabled: 0
+}
+target:
+{
+  executable: "out/build/relwithdebinfo-msvc/homework/c++/007_repetition_tester_jump_alignment.exe"
+  working_directory: "out/build/relwithdebinfo-msvc"
+  label: "relwithdebinfo msvc"
+  enabled: 0
+}
+target:
+{
+  executable: "out/build/relwithdebinfo-msvc/homework/c++/010_repetition_tester_read_widths.exe"
+  working_directory: "out/build/relwithdebinfo-msvc"
+  label: "relwithdebinfo msvc"
+  enabled: 0
+}
+target:
+{
+  executable: "out/build/relwithdebinfo-msvc/homework/c++/011_repetition_tester_cache_test.exe"
+  working_directory: "out/build/relwithdebinfo-msvc"
+  label: "relwithdebinfo msvc"
+  enabled: 1
+}
+target:
+{
   working_directory: "perfaware/part2/build"
   executable: "perfaware/part2/build/listing_0067_simple_haversine_main_dm.exe\r"
   arguments: "C:/Users/ctw00533/source/computer_enhance/perfaware/part2/data_1234_flex.json C:/Users/ctw00533/source/computer_enhance/perfaware/part2/data_1234_haveranswer.f64\r"
@@ -64,6 +141,24 @@ target:
 {
   working_directory: "perfaware/part2/build"
   executable: "perfaware/part2/build/listing_0071_os_timer_main_dm.exe"
+}
+target:
+{
+  executable: "perfaware/part2/build/listing_0086_recursive_haversine_main_dc.exe"
+  working_directory: "perfaware/part2/build"
+  arguments: "C:/Users/ctw00533/source/computer_enhance/perfaware/part2/build/dat_1000_flex.json\r"
+}
+target:
+{
+  executable: "perfaware/part3/build/listing_0111_pagefault_overhead_main_dm.exe"
+  working_directory: "perfaware/part3/build"
+  arguments: "C:\\Users\\ctw00533\\source\\computer_enhance\\perfaware\\part3\\build\\data_1000000_flex.json"
+}
+target:
+{
+  executable: "perfaware/part3/build/listing_0111_pagefault_overhead_main_rm.exe"
+  working_directory: "perfaware/part3/build"
+  arguments: "C:\\Users\\ctw00533\\source\\computer_enhance\\perfaware\\part3\\build\\data_1000000_flex.json"
 }
 debug_info:
 {
@@ -100,105 +195,10 @@ debug_info:
   path: "C:/Users/ctw00533/source/computer_enhance/out/build/debug-msvc/homework/part2/json_parser.pdb"
   timestamp: 66201403222814
 }
-target:
-{
-  executable: "perfaware/part2/build/listing_0086_recursive_haversine_main_dc.exe"
-  working_directory: "perfaware/part2/build"
-  arguments: "C:/Users/ctw00533/source/computer_enhance/perfaware/part2/build/dat_1000_flex.json\r"
-}
-target:
-{
-  executable: "perfaware/part3/build/listing_0111_pagefault_overhead_main_dm.exe"
-  working_directory: "perfaware/part3/build"
-  arguments: "C:\\Users\\ctw00533\\source\\computer_enhance\\perfaware\\part3\\build\\data_1000000_flex.json"
-}
-target:
-{
-  executable: "perfaware/part3/build/listing_0111_pagefault_overhead_main_rm.exe"
-  working_directory: "perfaware/part3/build"
-  arguments: "C:\\Users\\ctw00533\\source\\computer_enhance\\perfaware\\part3\\build\\data_1000000_flex.json"
-}
 debug_info:
 {
   path: "C:/Users/ctw00533/source/computer_enhance/perfaware/part2/build/listing_0086_recursive_haversine_main_dc.pdb"
   timestamp: 66210096194520
-}
-target:
-{
-  executable: "out/build/relwithdebinfo-msvc/homework/c++/repetition_tester_readfile_main.exe"
-  working_directory: "out/build/debug-clang/homework/c++"
-  arguments: "C:\\Users\\ctw00533\\source\\computer_enhance\\perfaware\\part3\\build\\data_1000000_flex.json"
-  label: debug
-}
-target:
-{
-  executable: "out/build/relwithdebinfo-msvc/homework/c++/repetition_tester_readfile_main.exe"
-  working_directory: "out/build/release-clang/homework/c++"
-  arguments: "C:\\Users\\ctw00533\\source\\computer_enhance\\perfaware\\part3\\build\\data_1000000_flex.json"
-  label: release
-}
-target:
-{
-  executable: "out/build/relwithdebinfo-msvc/homework/c++/repetition_tester_readfile_main.exe"
-  working_directory: "out/build/relwithdebinfo-clang"
-  arguments: "C:\\Users\\ctw00533\\source\\computer_enhance\\perfaware\\part3\\build\\data_1000000_flex.json"
-  label: "relwithdebinfo clang"
-}
-target:
-{
-  executable: "out/build/relwithdebinfo-msvc/homework/c++/repetition_tester_readfile_main.exe"
-  working_directory: "out/build/relwithdebinfo-msvc"
-  arguments: "C:\\Users\\ctw00533\\source\\computer_enhance\\perfaware\\part3\\build\\data_1000000_flex.json"
-  label: "relwithdebinfo msvc"
-}
-target:
-{
-  executable: "out/build/relwithdebinfo-msvc/homework/c++/repetition_tester_nops_main.exe"
-  working_directory: "out/build/relwithdebinfo-msvc"
-  label: "relwithdebinfo msvc"
-  enabled: 0
-}
-target:
-{
-  executable: "out/build/relwithdebinfo-msvc/homework/c++/repetition_tester_conditional_nop_loops.exe"
-  working_directory: "out/build/relwithdebinfo-msvc"
-  label: "relwithdebinfo msvc"
-  enabled: 0
-}
-target:
-{
-  executable: "out/build/relwithdebinfo-msvc/homework/c++/repetition_tester_jump_alignment.exe"
-  working_directory: "out/build/relwithdebinfo-msvc"
-  label: "relwithdebinfo msvc"
-  enabled: 0
-}
-target:
-{
-  executable: "out/build/relwithdebinfo-msvc/homework/c++/repetition_tester_read_widths.exe"
-  working_directory: "out/build/relwithdebinfo-msvc"
-  label: "relwithdebinfo msvc"
-  enabled: 0
-}
-target:
-{
-  executable: "out/build/relwithdebinfo-msvc/homework/c++/repetition_tester_cache_test.exe"
-  working_directory: "out/build/relwithdebinfo-msvc"
-  label: "relwithdebinfo msvc"
-  enabled: 1
-}
-target:
-{
-  executable: "out/build/debug-clang/homework/c++/haversine_generator.exe"
-  working_directory: out
-  enabled: 0
-  arguments: "uniform 123 10000"
-}
-target:
-{
-  executable: "out/build/debug-msvc/homework/c++/repetition_tester_nops_main.exe"
-  working_directory: "out/build/debug-msvc"
-  label: "debug msvc"
-  enabled: 0
 }
 debug_info:
 {
@@ -212,27 +212,17 @@ debug_info:
 }
 debug_info:
 {
-  path: "C:/Users/ctw00533/source/computer_enhance/out/build/debug-clang/homework/c++/repetition_tester_example_main.pdb"
+  path: "C:/Users/ctw00533/source/computer_enhance/out/build/debug-clang/homework/c++/004_repetition_tester_readfile_main.pdb"
   timestamp: 66219492304877
 }
 debug_info:
 {
   path: "C:/Users/ctw00533/source/computer_enhance/perfaware/part3/build/listing_0111_pagefault_overhead_main_dm.pdb"
-  timestamp: 66218000050599
-}
-breakpoint:
-{
-  source_location: "perfaware/part3/listing_0110_pagefault_overhead_test.cpp:35:1"
-  hit_count: 0
-}
-breakpoint:
-{
-  source_location: "perfaware/part3/listing_0110_pagefault_overhead_test.cpp:31:1"
-  hit_count: 0
+  timestamp: 66222459834955
 }
 debug_info:
 {
-  path: "C:/Users/ctw00533/source/computer_enhance/out/build/relwithdebinfo-clang/homework/c++/repetition_tester_example_main.pdb"
+  path: "C:/Users/ctw00533/source/computer_enhance/out/build/relwithdebinfo-clang/homework/c++/004_repetition_tester_readfile_main.pdb"
   timestamp: 66219495690356
 }
 debug_info:
@@ -240,174 +230,48 @@ debug_info:
   path: "C:/Users/ctw00533/source/computer_enhance/perfaware/part3/build/listing_0111_pagefault_overhead_main_rm.pdb"
   timestamp: 66218000051193
 }
-breakpoint:
-{
-  source_location: "perfaware/part3/listing_0110_pagefault_overhead_test.cpp:27:1"
-  hit_count: 0
-}
 debug_info:
 {
-  path: "C:/Users/ctw00533/source/computer_enhance/out/build/relwithdebinfo-msvc/homework/c++/repetition_tester_example_main.pdb"
+  path: "C:/Users/ctw00533/source/computer_enhance/out/build/relwithdebinfo-msvc/homework/c++/004_repetition_tester_readfile_main.pdb"
   timestamp: 66219583727773
 }
 debug_info:
 {
-  path: "C:/Users/ctw00533/source/computer_enhance/out/build/relwithdebinfo-msvc/homework/c++/repetition_tester_nops_main.pdb"
+  path: "C:/Users/ctw00533/source/computer_enhance/out/build/relwithdebinfo-msvc/homework/c++/005_repetition_tester_nops_main.pdb"
   timestamp: 66219912041679
-}
-breakpoint:
-{
-  source_location: "homework/c++/repetition_tester_nops_main.cpp:49:1"
-  hit_count: 0
 }
 debug_info:
 {
-  path: "C:/Users/ctw00533/source/computer_enhance/out/build/debug-msvc/homework/c++/repetition_tester_nops_main.pdb"
+  path: "C:/Users/ctw00533/source/computer_enhance/out/build/debug-msvc/homework/c++/005_repetition_tester_nops_main.pdb"
   timestamp: 66219912169420
 }
 debug_info:
 {
-  path: "C:/Users/ctw00533/source/computer_enhance/out/build/debug-clang/homework/c++/haversine_generator.pdb"
+  path: "C:/Users/ctw00533/source/computer_enhance/out/build/debug-clang/homework/c++/001_haversine_generator.pdb"
   timestamp: 66220728687873
 }
-breakpoint:
-{
-  source_location: "homework/c++/haversine_generator.cpp:65:1"
-  hit_count: 0
-}
-breakpoint:
-{
-  source_location: "../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/xstring:769:1"
-  hit_count: 0
-}
 debug_info:
 {
-  path: "C:/Users/ctw00533/source/computer_enhance/out/build/relwithdebinfo-msvc/homework/c++/repetition_tester_conditional_nop_loops.pdb"
+  path: "C:/Users/ctw00533/source/computer_enhance/out/build/relwithdebinfo-msvc/homework/c++/006_repetition_tester_conditional_nop_loops.pdb"
   timestamp: 66222391988661
 }
-breakpoint:
-{
-  source_location: "homework/c++/repetition_tester_conditional_nop_loops.cpp:104:1"
-  hit_count: 0
-}
-breakpoint:
-{
-  address_location: 0x7ff758cc4751
-  hit_count: 0
-  enabled: 0
-}
-breakpoint:
-{
-  source_location: "homework/c++/repetition_tester_conditional_nop_loops.cpp:40:1"
-  hit_count: 0
-}
 debug_info:
 {
-  path: "C:/Users/ctw00533/source/computer_enhance/out/build/relwithdebinfo-msvc/homework/c++/repetition_tester_jump_alignment.pdb"
+  path: "C:/Users/ctw00533/source/computer_enhance/out/build/relwithdebinfo-msvc/homework/c++/007_repetition_tester_jump_alignment.pdb"
   timestamp: 66222454648984
 }
-breakpoint:
-{
-  source_location: "homework/c++/repetition_tester_jump_alignment.cpp:42:1"
-  hit_count: 0
-}
-breakpoint:
-{
-  address_location: 0x7ff6e1ba4000
-  hit_count: 0
-}
-breakpoint:
-{
-  address_location: 0x7ff6e1ba4040
-  hit_count: 0
-}
-breakpoint:
-{
-  address_location: 0x7ff6e1ba4080
-  hit_count: 0
-}
 debug_info:
 {
-  path: "C:/Users/ctw00533/source/computer_enhance/out/build/relwithdebinfo-msvc/homework/c++/repetition_tester_read_widths.pdb"
+  path: "C:/Users/ctw00533/source/computer_enhance/out/build/relwithdebinfo-msvc/homework/c++/010_repetition_tester_read_widths.pdb"
   timestamp: 66222905082147
 }
-breakpoint:
-{
-  address_location: 0x7ff610ff4043
-  hit_count: 0
-}
-breakpoint:
-{
-  address_location: 0x7ff718f6404b
-  hit_count: 0
-}
-breakpoint:
-{
-  source_location: "homework/c++/repetition_tester_read_widths.cpp:44:1"
-  hit_count: 0
-}
-breakpoint:
-{
-  source_location: "homework/c++/repetition_tester_read_widths.cpp:40:1"
-  hit_count: 0
-}
-breakpoint:
-{
-  address_location: 0x7ff76e2440c0
-  hit_count: 0
-}
 debug_info:
 {
-  path: "C:/Users/ctw00533/source/computer_enhance/out/build/relwithdebinfo-msvc/homework/c++/repetition_tester_cache_test.pdb"
-  timestamp: 66223789630957
+  path: "C:/Users/ctw00533/source/computer_enhance/out/build/relwithdebinfo-msvc/homework/c++/011_repetition_tester_cache_test.pdb"
+  timestamp: 66224898854253
 }
 breakpoint:
 {
-  address_location: 0x7ff76f1a46c9
-  hit_count: 0
-}
-breakpoint:
-{
-  address_location: 0x7ff7e11546fa
-  hit_count: 0
-}
-breakpoint:
-{
-  source_location: "homework/c++/repetition_tester_cache_test.cpp:32:1"
-  hit_count: 0
-}
-breakpoint:
-{
-  source_location: "homework/c++/repetition_tester_cache_test.cpp:36:1"
-  hit_count: 0
-}
-breakpoint:
-{
-  address_location: 0x7ff6f1794d10
-  hit_count: 0
-}
-breakpoint:
-{
-  address_location: 0x7ff617e24d0d
-  hit_count: 0
-}
-breakpoint:
-{
-  address_location: 0x7ff603f34c8d
-  hit_count: 0
-}
-breakpoint:
-{
-  address_location: 0x7ff77ad34c8d
-  hit_count: 0
-}
-breakpoint:
-{
-  address_location: 0x7ff7de9e4c90
-  hit_count: 0
-}
-breakpoint:
-{
-  source_location: "homework/c++/repetition_tester_cache_test.cpp:80:1"
+  source_location: "homework/c++/011_repetition_tester_cache_test.cpp:73:1"
   hit_count: 1
 }
