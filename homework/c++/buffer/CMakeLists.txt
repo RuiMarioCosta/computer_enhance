@@ -1,0 +1,12 @@
+add_library(buffer
+  buffer.hpp
+  buffer.cpp
+)
+target_link_libraries(buffer
+  PUBLIC
+    types
+)
+target_include_directories(buffer
+  PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}
+)
