@@ -1,0 +1,12 @@
+add_library(csv_table
+  csv_table.hpp
+  csv_table.cpp
+)
+target_link_libraries(csv_table
+  PUBLIC
+    types
+)
+target_include_directories(csv_table
+  PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}
+)

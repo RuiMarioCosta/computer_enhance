@@ -1,4 +1,5 @@
 add_subdirectory(buffer)
+add_subdirectory(csv_table)
 add_subdirectory(haversine)
 add_subdirectory(metrics)
 add_subdirectory(profiler)
@@ -40,6 +41,7 @@ function(add_repetition_tester_executable target_name source_file)
   target_link_libraries(${target_name}
     PRIVATE
       buffer
+      csv_table
       metrics
       repetition_tester
       test_functions

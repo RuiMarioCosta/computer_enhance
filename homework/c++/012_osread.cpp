@@ -2,17 +2,18 @@
 #include <Windows.h>
 
 #include "buffer.hpp"
+#include "csv_table.hpp"
 #include "file_reads.hpp"
 #include "metrics.hpp"
 #include "repetition_tester.hpp"
 
 #include <array>
 #include <filesystem>
-#include <fstream>
 #include <functional>
 #include <print>
 #include <ranges>
 #include <stdexcept>
+#include <string>
 #include <string_view>
 
 #include <fileapi.h>
@@ -50,7 +51,6 @@ int main(int argc, char* argv[]) {
   }
 
   Buffer buffer = read_file(filename);
-  BufferView bufferView = read_file2(filename);
   std::println("CPU freq: {}, file size: {}", cpu_timer_freq, buffer.size());
 
   const std::array test_functions{
@@ -68,19 +68,24 @@ int main(int argc, char* argv[]) {
                     open_allocate_and_fread(size, filename.string().c_str());
                   }},
   };
+  csv_table csv{"ReadBufferSize",
+                {"allocate_and_touch", "allocate_and_touch2",
+                 "allocate_and_copy", "open_allocate_and_read",
+                 "open_allocate_and_fread"}};
 
   auto buffer_sizes =
-      std::ranges::views::iota(0) |
-      std::ranges::views::transform([](auto i) { return 1 << i; }) |
-      std::ranges::views::filter(
-          [size = static_cast<int>(buffer.size())](auto i) {
-            return 256 * 1024 <= i && i <= size;
-          });
+      std::ranges::views::iota(18u) |
+      std::ranges::views::transform([](auto i) { return 1u << i; }) |
+      std::ranges::views::take_while(
+          [size = buffer.size()](auto value) { return value <= size; });
 
   for (auto const buffer_size : buffer_sizes) {
+    std::vector<f64> bandwidths;
+    bandwidths.reserve(test_functions.size());
+
     for (auto const& test_func : test_functions) {
       std::println("\n--- {}, {} kib ---", test_func.name, buffer_size / 1024);
-      repetition_tester tester{buffer.size(), cpu_timer_freq, 10};
+      repetition_tester tester{buffer.size(), cpu_timer_freq, 1};
       while (tester.is_testing()) {
         tester.begin();
         test_func.func(buffer_size);
@@ -89,7 +94,11 @@ int main(int argc, char* argv[]) {
         tester.add_bytes_count(buffer.size());
       }
 
-      // tester.save_to_file("cache_test.csv", file_size);
+      bandwidths.push_back(tester.bandwidth());
     }
+
+    csv.add_row(std::to_string(buffer_size / 1024) + "k", bandwidths);
   }
+
+  csv.write_to_file("os_read.csv");
 }

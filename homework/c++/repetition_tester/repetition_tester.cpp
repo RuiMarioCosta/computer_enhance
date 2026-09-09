@@ -94,6 +94,16 @@ bool repetition_tester::is_testing() {
   return true;
 }
 
+f64 repetition_tester::bandwidth() const {
+  auto const& result = m_results.min;
+  f64 cpu_timer = static_cast<f64>(result.cpu_timer) / result.test_count;
+  f64 seconds = cpu_timer / m_cpu_timer_frequency;
+  f64 gib = 1024. * 1024. * 1024.;
+  f64 byte_count = static_cast<f64>(result.byte_count) / result.test_count;
+
+  return byte_count / (gib * seconds);
+}
+
 void repetition_tester::_print_value(std::string_view label,
                                      Result result) const {
   f64 cpu_timer = static_cast<f64>(result.cpu_timer) / result.test_count;

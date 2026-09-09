@@ -136,7 +136,7 @@ target:
   executable: "out/build/relwithdebinfo-msvc/homework/c++/012_osread.exe"
   working_directory: "out/build/relwithdebinfo-msvc"
   label: "relwithdebinfo msvc"
-  arguments: "C:/Users/ctw00533/source/computer_enhance/out/build/relwithdebinfo-msvc/data_1000000_flex.json"
+  arguments: "C:/Users/ctw00533/source/computer_enhance/out/data_1000000_flex.json"
   enabled: 1
 }
 target:
@@ -293,7 +293,7 @@ debug_info:
 debug_info:
 {
   path: "C:/Users/ctw00533/source/computer_enhance/out/build/relwithdebinfo-msvc/homework/c++/012_osread.pdb"
-  timestamp: 66225202580898
+  timestamp: 66225206910022
 }
 debug_info:
 {
@@ -325,9 +325,4 @@ breakpoint:
   address_location: open_allocate_and_read
   hit_count: 0
   enabled: 0
-}
-breakpoint:
-{
-  source_location: "homework/c++/012_osread.cpp:186:1"
-  hit_count: 6
 }

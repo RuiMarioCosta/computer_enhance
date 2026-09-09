@@ -53,14 +53,11 @@ public:
   void end();
   void add_bytes_count(u64 bytes);
   [[nodiscard]] bool is_testing();
+  [[nodiscard]] f64 bandwidth() const;
 
   template <typename T> void save_to_file(std::filesystem::path path, T value) {
     std::ofstream ofs{path, std::ios::app};
-    auto result = m_results.min;
-    f64 seconds = static_cast<f64>(result.cpu_timer) / m_cpu_timer_frequency;
-    f64 gib = 1 << 30;
-    f64 bandwidth = result.byte_count / (gib * seconds);
-    ofs << value << ',' << bandwidth << '\n';
+    ofs << value << ',' << bandwidth() << '\n';
   }
 
 private:
