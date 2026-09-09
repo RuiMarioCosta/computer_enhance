@@ -400,3 +400,11 @@ because of that it takes something that it should have been serially dependent
 on a particular register and make that serial dependency go away.
 
 ### Execution Ports and the Scheduler
+
+### 2x Faster File Reads
+
+The most important thing to know about any optimization problem is how fast it
+could run, i.e., the maximum theoretical limit, otherwise we could be optimizing
+for something that can no longer be more optimized or we might think that we
+already reached the best performance when it's still far from the theoretical
+limit.

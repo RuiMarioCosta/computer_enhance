@@ -17,9 +17,9 @@ struct test_params {
 };
 
 void test(u64 cpu_timer_freq, std::vector<u8>& buffer) {
-  const std::vector<test_params> test_functions{{
-      {"Read_32x8", &Read_32x8},
-  }};
+  const std::array test_functions{
+      test_params{"Read_32x8", &Read_32x8},
+  };
 
   auto masks =
       std::ranges::views::iota(10, 30) |
@@ -54,9 +54,9 @@ struct test_params {
 };
 
 void test(u64 cpu_timer_freq, std::vector<u8>& buffer) {
-  const std::vector<test_params> test_functions{{
-      {"DoubleLoopRead_32x8", &DoubleLoopRead_32x8},
-  }};
+  const std::array test_functions{
+      test_params{"DoubleLoopRead_32x8", &DoubleLoopRead_32x8},
+  };
 
   auto number_of_samples = 32;
   auto inner_loop_size = 256; // 256 bytes due to the ymm0 reads

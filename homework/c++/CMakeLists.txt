@@ -1,3 +1,4 @@
+add_subdirectory(buffer)
 add_subdirectory(haversine)
 add_subdirectory(metrics)
 add_subdirectory(profiler)
@@ -38,8 +39,9 @@ function(add_repetition_tester_executable target_name source_file)
   )
   target_link_libraries(${target_name}
     PRIVATE
-      repetition_tester
+      buffer
       metrics
+      repetition_tester
       test_functions
   )
 endfunction()
@@ -52,4 +54,18 @@ add_repetition_tester_executable(008_repetition_tester_rat 008_repetition_tester
 add_repetition_tester_executable(009_repetition_tester_read_unroll 009_repetition_tester_read_unroll.cpp)
 add_repetition_tester_executable(010_repetition_tester_read_widths 010_repetition_tester_read_widths.cpp)
 add_repetition_tester_executable(011_repetition_tester_cache_test 011_repetition_tester_cache_test.cpp)
+add_repetition_tester_executable(012_osread 012_osread.cpp)
 
+if(MSVC)
+  target_compile_options(012_osread PRIVATE
+    /arch:AVX2
+    /Zi
+    /W4
+  )
+elseif(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  target_compile_options(012_osread PRIVATE
+    -mavx2
+    -g
+    -Wall
+  )
+endif()
