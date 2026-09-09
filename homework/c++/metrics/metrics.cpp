@@ -84,6 +84,11 @@ u64 GetCPUFreq() {
   return CPUFreq;
 }
 
+/*
+ * P - core 0
+ * E - core 2
+ * LP - core 20
+ */
 void SetProcessAffinity(u64 core) {
   auto process = GetCurrentProcess();
   DWORD_PTR mask = 1 << core;
