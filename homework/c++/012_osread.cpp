@@ -56,8 +56,8 @@ int main(int argc, char* argv[]) {
   const std::array test_functions{
       test_params{"allocate_and_touch",
                   [](u64 size) { allocate_and_touch(size); }},
-      test_params{"allocate_and_touch2",
-                  [](u64 size) { allocate_and_touch2(size); }},
+      // test_params{"allocate_and_touch2",
+      //             [](u64 size) { allocate_and_touch2(size); }},
       test_params{"allocate_and_copy",
                   [&buffer](u64 size) { allocate_and_copy(size, buffer); }},
       test_params{

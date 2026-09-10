@@ -15,6 +15,12 @@
 #include <filesystem>
 #include <stdexcept>
 
+/*
+ * Time how long it takes to provision the memory that we need for the buffer
+ * we're going to use. It's not testing file copying or anything like that, it's
+ * just giving a baseline on our performance to see how long it takes to get our
+ * buffer ready.
+ */
 inline void allocate_and_touch(u64 buffer_size) {
   constexpr int MIN_MEMORY_PAGE_SIZE = 4096;
   Buffer buffer{buffer_size};
