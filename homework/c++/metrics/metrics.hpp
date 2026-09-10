@@ -1,3 +1,5 @@
+#pragma once
+
 #include "types.hpp"
 
 #if _WIN32
