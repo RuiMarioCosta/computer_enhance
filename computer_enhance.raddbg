@@ -1,10 +1,16 @@
 // raddbg 0.9.25 project file
 
+recent_file: path: "homework/c++/013_osread_sum.cpp"
+recent_file: path: "../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/functional"
+recent_file: path: "homework/c++/test_functions/osread_sum.hpp"
+recent_file: path: "homework/c++/test_functions/file_reads.hpp"
+recent_file: path: "perfaware/part3/listing_0168_osread_sum_main.cpp"
+recent_file: path: "perfaware/part3/listing_0164_csv_repetition_tester.cpp"
+recent_file: path: "perfaware/part3/listing_0167_osread_sum.cpp"
 recent_file: path: "homework/c++/012_osread.cpp"
 recent_file: path: "../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/typeinfo"
 recent_file: path: "perfaware/part3/listing_0166_osread_revisited_main.cpp"
 recent_file: path: "perfaware/part3/listing_0165_osread_revisited.cpp"
-recent_file: path: "../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/functional"
 recent_file: path: "../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/type_traits"
 recent_file: path: "../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/format"
 recent_file: path: "homework/c++/buffer/buffer.cpp"
@@ -65,7 +71,6 @@ target:
   executable: "out/build/relwithdebinfo-msvc/homework/c++/001_haversine_generator.exe"
   working_directory: "out/build/relwithdebinfo-msvc"
   arguments: "uniform 123 1000000"
-  enabled: 0
 }
 target:
 {
@@ -137,6 +142,13 @@ target:
   working_directory: "out/build/relwithdebinfo-msvc"
   label: "relwithdebinfo msvc"
   arguments: "C:/Users/ctw00533/source/computer_enhance/out/data_1000000_flex.json"
+}
+target:
+{
+  executable: "out/build/relwithdebinfo-msvc/homework/c++/013_osread_sum.exe\r"
+  working_directory: "out/build/relwithdebinfo-msvc"
+  label: "relwithdebinfo msvc"
+  arguments: "C:/Users/ctw00533/source/computer_enhance/out/data_1000000_flex.json"
   enabled: 1
 }
 target:
@@ -173,7 +185,12 @@ target:
   executable: "perfaware/part3/build/listing_0166_osread_revisited_main_rm.exe"
   working_directory: "perfaware/part3/build"
   arguments: "C:\\Users\\ctw00533\\source\\computer_enhance\\perfaware\\part3\\build\\data_1000000_flex.json"
-  enabled: 0
+}
+target:
+{
+  executable: "perfaware/part3/build/listing_0168_osread_sum_main_rm.exe"
+  working_directory: "perfaware/part3/build"
+  arguments: "C:\\Users\\ctw00533\\source\\computer_enhance\\perfaware\\part3\\build\\data_1000000_flex.json"
 }
 debug_info:
 {
@@ -325,4 +342,49 @@ breakpoint:
   address_location: open_allocate_and_read
   hit_count: 0
   enabled: 0
+}
+debug_info:
+{
+  path: "C:/Users/ctw00533/source/computer_enhance/out/build/relwithdebinfo-msvc/homework/c++/013_osread_sum.pdb"
+  timestamp: 66226039563773
+}
+breakpoint:
+{
+  source_location: "homework/c++/013_osread_sum.cpp:77:1"
+  hit_count: 2
+}
+debug_info:
+{
+  path: "C:/Users/ctw00533/source/computer_enhance/perfaware/part3/build/listing_0168_osread_sum_main_rm.pdb"
+  timestamp: 66222459911219
+}
+breakpoint:
+{
+  source_location: "perfaware/part3/listing_0168_osread_sum_main.cpp:103:1"
+  hit_count: 0
+}
+breakpoint:
+{
+  source_location: "perfaware/part3/listing_0167_osread_sum.cpp:74:1"
+  hit_count: 0
+}
+breakpoint:
+{
+  source_location: "perfaware/part3/listing_0167_osread_sum.cpp:115:1"
+  hit_count: 0
+}
+breakpoint:
+{
+  source_location: "homework/c++/013_osread_sum.cpp:83:1"
+  hit_count: 1
+}
+breakpoint:
+{
+  address_location: open_allocate_and_sum
+  hit_count: 1
+}
+breakpoint:
+{
+  source_location: "homework/c++/test_functions/osread_sum.hpp:68:1"
+  hit_count: 1
 }

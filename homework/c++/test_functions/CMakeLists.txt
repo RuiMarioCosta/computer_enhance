@@ -43,9 +43,9 @@ target_include_directories(test_functions
     ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
-add_library(file_reads INTERFACE)
-target_link_libraries(file_reads INTERFACE buffer)
-target_include_directories(file_reads
+add_library(test_funcs INTERFACE)
+target_link_libraries(test_funcs INTERFACE buffer)
+target_include_directories(test_funcs
   INTERFACE
     ${CMAKE_CURRENT_SOURCE_DIR}
 )

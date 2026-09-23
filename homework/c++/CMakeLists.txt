@@ -1,3 +1,17 @@
+if(MSVC)
+  add_compile_options(
+    $<$<COMPILE_LANGUAGE:CXX>:/arch:AVX2>
+    $<$<COMPILE_LANGUAGE:CXX>:/Zi>
+    $<$<COMPILE_LANGUAGE:CXX>:/W4>
+  )
+elseif(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  add_compile_options(
+    $<$<COMPILE_LANGUAGE:CXX>:-mavx2>
+    $<$<COMPILE_LANGUAGE:CXX>:-g>
+    $<$<COMPILE_LANGUAGE:CXX>:-Wall>
+  )
+endif()
+
 add_subdirectory(buffer)
 add_subdirectory(csv_table)
 add_subdirectory(haversine)
@@ -57,17 +71,5 @@ add_repetition_tester_executable(009_repetition_tester_read_unroll 009_repetitio
 add_repetition_tester_executable(010_repetition_tester_read_widths 010_repetition_tester_read_widths.cpp)
 add_repetition_tester_executable(011_repetition_tester_cache_test 011_repetition_tester_cache_test.cpp)
 add_repetition_tester_executable(012_osread 012_osread.cpp)
+add_repetition_tester_executable(013_osread_sum 013_osread_sum.cpp)
 
-if(MSVC)
-  target_compile_options(012_osread PRIVATE
-    /arch:AVX2
-    /Zi
-    /W4
-  )
-elseif(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-  target_compile_options(012_osread PRIVATE
-    -mavx2
-    -g
-    -Wall
-  )
-endif()
